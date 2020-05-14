@@ -1,0 +1,2 @@
+class PrimaryWeapon < ApplicationRecord
+end

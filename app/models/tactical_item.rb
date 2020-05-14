@@ -1,0 +1,2 @@
+class TacticalItem < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class LethalWeapon < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class TaticalPack < ApplicationRecord
+end
