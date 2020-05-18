@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TaticalPackTest < ActiveSupport::TestCase
+class TacticalPackageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+TacticalPackage.create(title:"Grenadier", description:"Devastator of Zombies", creator:"Chris") 
+PrimaryWeapon.create(tactical_package_id:"1", name:"Spas 12", description:"12 gauge madness", image_url:"ahfjf") 
+SecondaryWeapon.create(tactical_package_id:"1", name:"Glock", description:"17 rounds of lead in a mag", image_url:"none") 
+LethalWeapon.create(tactical_package_id:"1", name:"semtex", description:"plastic explosive", image_url:"none") 
+TacticalItem.create(tactical_package_id:"1", name:"Antibiotics", description:"For sickness", image_url:"none")
