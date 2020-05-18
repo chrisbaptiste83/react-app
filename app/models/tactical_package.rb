@@ -1,3 +1,6 @@
 class TacticalPackage < ApplicationRecord 
-    has_many :tactical_items
+    has_one :primary_weapon
+    has_one :secondary_weapon 
+    has_one :lethal_weapon 
+    has_one :tactical_item
 end
