@@ -1,11 +1,11 @@
-import React from 'react';
-import './zombie.png';
-import './App.css';
+import React from 'react'; 
+import './App.css'; 
+import TacticalPackagesContainer from './TacticalPackagesContainer'; 
 
 function App() {
   return ( 
   <div>
-    <h1>Doomsday</h1>
+    <TacticalPackagesContainer />
   </div>
   );
 }
