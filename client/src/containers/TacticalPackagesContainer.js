@@ -1,32 +1,42 @@
 import React, { Component } from 'react';  
-import TacticalPackagesList from '../components/TacticalPackagesList';
+import TacticalPackagesList from '../components/TacticalPackagesList'; 
+import { connect } from 'react-redux';
+import { fetchTacticalPackages} from '../actions';
 
 class TacticalPackagesContainer extends Component { 
 
     constructor(props) {
         super(props);
-        this.state = {
-          tacticalPackages: []
-        } 
+        this.renderLoadedContent = this.renderLoadedContent.bind(this)
     } 
 
     componentDidMount() {
-        fetch('http://localhost:3001/tactical_packages')
-          .then(response => response.json())
-          .then(tacticalPackages => { 
-            this.setState({ tacticalPackages: tacticalPackages })
-          })
+      this.props.fetchTacticalPackages()
       } 
 
+      renderLoadedContent() {
+        return (
+          <React.Fragment>
+            <TacticalPackagesList 
+              tacticalPackages={this.props.tacticalPackages}/> 
+          </React.Fragment>
+        )
+      } 
 
-    render() {
+      render() {
         return (
           <section>
-            <h1>Tactical Packages:</h1> 
-            <TacticalPackagesList tacticalPackages={this.state.tacticalPackages}/>
+            <h4>Tactical Packs</h4>
+            {this.props.loading ? 'Loading...' : this.renderLoadedContent()}
           </section>
         )
-    }
+      }
 } 
 
-export default TacticalPackagesContainer;
+const mapStateToProps = ({tacticalPackages}) => {
+  return {
+    tacticalPackages: tacticalPackages.items.map(tacticalPackageId => tacticalPackages.itemsById[tacticalPackageId]),
+    loading: tacticalPackages.loading
+  }
+}
+export default connect(mapStateToProps, { fetchTacticalPackages })(TacticalPackagesContainer)
