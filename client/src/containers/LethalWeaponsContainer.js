@@ -1,31 +1,33 @@
 import React, { Component } from 'react';  
-import LethalWeaponsList from '../components/LethalWeaponsList';
+import LethalWeaponsList from '../components/LethalWeaponsList'; 
+import { connect } from 'react-redux';
+import { fetchLethalWeapons} from '../actions';
 
 class LethalWeaponsContainer extends Component { 
 
     constructor(props) {
         super(props);
-        this.state = {
-          lethalWeapons: []
-        } 
     } 
 
     componentDidMount() {
-        fetch('http://localhost:3001/lethal_weapons')
-          .then(response => response.json())
-          .then(lethalWeapons => { 
-            this.setState({ lethalWeapons: lethalWeapons })
-          })
+        this.props.fetchLethalWeapons()
       }
     
     render() {
         return (
           <section>
             <h1>Lethal Weapons:</h1> 
-            <LethalWeaponsList lethalWeapons={this.state.lethalWeapons}/>
+            <LethalWeaponsList lethalWeapons={this.props.lethalWeapons}/>
           </section>
         )
     }
 } 
 
-export default LethalWeaponsContainer;
+const mapStateToProps = ({lethalWeapons}) => {
+  return {
+    lethalWeapons: lethalWeapons.items.map(lethalWeaponId => lethalWeapons.itemsById[lethalWeaponId]),
+    loading: lethalWeapons.loading
+  }
+}
+
+export default connect(mapStateToProps, { fetchLethalWeapons })(LethalWeaponsContainer)

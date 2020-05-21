@@ -20,7 +20,7 @@ function App() {
   <Switch>
     <center> 
     <Navbar/> 
-    <Route exact path="/">
+    <Route exact path="/tactical_packages">
       <TacticalPackagesContainer /> 
     </Route> 
     <Route path="/primary_weapons">
@@ -35,9 +35,7 @@ function App() {
     <Route path="/lethal_weapons">
       <LethalWeaponsContainer /> 
     </Route> 
-    <Route path="/tactical_packages/id">
-      <TacticalPackageShow /> 
-    </Route> 
+    <Route path="/tactical_packages/:id" component={TacticalPackageShow}></Route>
     </center> 
   </Switch> 
   </div> 

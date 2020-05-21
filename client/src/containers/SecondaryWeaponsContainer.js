@@ -1,31 +1,34 @@
 import React, { Component } from 'react';  
-import SecondaryWeaponsList from '../components/SecondaryWeaponsList';
+import SecondaryWeaponsList from '../components/SecondaryWeaponsList'; 
+import { connect } from 'react-redux';
+import { fetchSecondaryWeapons} from '../actions';
+
 
 class SecondaryWeaponsContainer extends Component { 
 
     constructor(props) {
         super(props);
-        this.state = {
-          secondaryWeapons: []
-        } 
     } 
 
     componentDidMount() {
-        fetch('http://localhost:3001/secondary_weapons')
-          .then(response => response.json())
-          .then(secondaryWeapons => { 
-            this.setState({ secondaryWeapons: secondaryWeapons })
-          })
+        this.props.fetchSecondaryWeapons()
       }
     
     render() {
         return (
           <section>
             <h1>Secondary Weapons:</h1> 
-            <SecondaryWeaponsList secondaryWeapons={this.state.secondaryWeapons}/>
+            <SecondaryWeaponsList secondaryWeapons={this.props.secondaryWeapons}/>
           </section>
         )
     }
 } 
 
-export default SecondaryWeaponsContainer;
+const mapStateToProps = ({secondaryWeapons}) => {
+  return {
+    secondaryWeapons: secondaryWeapons.items.map(secondaryWeaponId => secondaryWeapons.itemsById[secondaryWeaponId]),
+    loading: secondaryWeapons.loading
+  }
+}
+
+export default connect(mapStateToProps, { fetchSecondaryWeapons })(SecondaryWeaponsContainer)

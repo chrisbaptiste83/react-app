@@ -3,11 +3,18 @@ import {
   RECEIVE_TACTICALPACKS,
   FETCHING_PRIMARYWEAPONS,
   RECEIVE_PRIMARYWEAPONS,
-  FETCHING_TACTICALPACKS
+  FETCHING_TACTICALPACKS, 
+  RECEIVE_TACTICALPACK, 
+  RECEIVE_LETHALWEAPONS,
+  FETCHING_LETHALWEAPONS,
+  RECEIVE_SECONDARYWEAPONS,
+  FETCHING_SECONDARYWEAPONS, 
+  RECEIVE_TACTICALITEMS,
+  FETCHING_TACTICALITEMS
 } from '../actions';
 
 const tacticalPackages = (state = {
-  items: [],
+  items: [], 
   itemsById: {},
   loading: false 
 }, action) => {
@@ -25,7 +32,11 @@ const tacticalPackages = (state = {
           return idMap;
         },{}),
         loading: false
-      }
+      } 
+    case RECEIVE_TACTICALPACK: 
+    return Object.assign({}, state, {
+        tacticalPackage: action.payload
+      }) 
     default:
       return state;
   }
@@ -54,11 +65,89 @@ const primaryWeapons = (state = {
     default:
       return state;
   }
-}
+} 
+
+const tacticalItems = (state = {
+    items: [],
+    itemsById: {},
+    loading: false 
+  }, action) => {
+    switch(action.type) {
+      case FETCHING_TACTICALITEMS:
+        return {
+          ...state,
+          loading: true
+        }
+      case RECEIVE_TACTICALITEMS:
+        return {
+          items: action.payload.map(tacticalItem => tacticalItem.id),
+          itemsById: action.payload.reduce((idMap, tacticalItem) => {
+            idMap[tacticalItem.id] = tacticalItem;
+            return idMap;
+          },{}),
+          loading: false
+        }
+      default:
+        return state;
+    }
+  } 
+
+  const lethalWeapons = (state = {
+    items: [],
+    itemsById: {},
+    loading: false 
+  }, action) => {
+    switch(action.type) {
+      case FETCHING_LETHALWEAPONS:
+        return {
+          ...state,
+          loading: true
+        }
+      case RECEIVE_LETHALWEAPONS:
+        return {
+          items: action.payload.map(lethalWeapon => lethalWeapon.id),
+          itemsById: action.payload.reduce((idMap, lethalWeapon) => {
+            idMap[lethalWeapon.id] = lethalWeapon;
+            return idMap;
+          },{}),
+          loading: false
+        }
+      default:
+        return state;
+    }
+  } 
+
+  const secondaryWeapons = (state = {
+    items: [],
+    itemsById: {},
+    loading: false 
+  }, action) => {
+    switch(action.type) {
+      case FETCHING_SECONDARYWEAPONS:
+        return {
+          ...state,
+          loading: true
+        }
+      case RECEIVE_SECONDARYWEAPONS:
+        return {
+          items: action.payload.map(secondaryWeapon => secondaryWeapon.id),
+          itemsById: action.payload.reduce((idMap, secondaryWeapon) => {
+            idMap[secondaryWeapon.id] = secondaryWeapon;
+            return idMap;
+          },{}),
+          loading: false
+        }
+      default:
+        return state;
+    }
+  }
 
 const rootReducer = combineReducers({
   tacticalPackages,
-  primaryWeapons
+  primaryWeapons, 
+  secondaryWeapons,
+  lethalWeapons, 
+  tacticalItems
 })
 
 export default rootReducer;

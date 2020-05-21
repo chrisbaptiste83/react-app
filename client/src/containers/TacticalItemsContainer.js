@@ -1,31 +1,33 @@
 import React, { Component } from 'react';  
-import TacticalItemsList from '../components/TacticalItemsList';
+import TacticalItemsList from '../components/TacticalItemsList'; 
+import { connect } from 'react-redux';
+import { fetchTacticalItems} from '../actions';
 
 class TacticalItemsContainer extends Component { 
 
     constructor(props) {
         super(props);
-        this.state = {
-          tacticalItems: []
-        } 
     } 
 
     componentDidMount() {
-        fetch('http://localhost:3001/tactical_items')
-          .then(response => response.json())
-          .then(tacticalItems => { 
-            this.setState({ tacticalItems: tacticalItems })
-          })
+        this.props.fetchTacticalItems()
       }
     
     render() {
         return (
           <section>
             <h1>Tactical Equipment:</h1> 
-            <TacticalItemsList tacticalItems={this.state.tacticalItems}/>
+            <TacticalItemsList tacticalItems={this.props.tacticalItems}/>
           </section>
         )
     }
 } 
 
-export default TacticalItemsContainer;
+const mapStateToProps = ({tacticalItems}) => {
+  return {
+    tacticalItems: tacticalItems.items.map(tacticalItemId => tacticalItems.itemsById[tacticalItemId]),
+    loading: tacticalItems.loading
+  }
+}
+
+export default connect(mapStateToProps, { fetchTacticalItems })(TacticalItemsContainer)
