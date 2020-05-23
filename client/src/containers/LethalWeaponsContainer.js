@@ -18,10 +18,10 @@ class LethalWeaponsContainer extends Component {
         return (
           <section> 
             <center>
-            <Jumbotron style={{ width: '50rem' }}>  
-              <h1> Lethal Weapons: </h1> 
-            </Jumbotron>
-            <LethalWeaponsList lethalWeapons={this.props.lethalWeapons}/> 
+              <Jumbotron style={{ width: '50rem' }}>  
+                <h1> Lethal Weapons: </h1> 
+              </Jumbotron>
+              <LethalWeaponsList lethalWeapons={this.props.lethalWeapons}/> 
             </center>
           </section>
         )

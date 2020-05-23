@@ -18,10 +18,10 @@ class TacticalItemsContainer extends Component {
         return (
           <section> 
             <center>
-            <Jumbotron style={{ width: '50rem' }}>  
-              <h1> Tactical Equipment:</h1> 
-            </Jumbotron>
-            <TacticalItemsList tacticalItems={this.props.tacticalItems}/> 
+              <Jumbotron style={{ width: '50rem' }}>  
+                <h1> Tactical Equipment:</h1> 
+              </Jumbotron>
+              <TacticalItemsList tacticalItems={this.props.tacticalItems}/> 
             </center>
           </section>
         )

@@ -25,66 +25,50 @@ export const fetchTacticalPackages = () => {
 } 
 
 export const fetchSecondaryWeapons = () => {
-    return dispatch => {
-      dispatch({ type: FETCHING_SECONDARYWEAPONS })
-      fetch('http://localhost:3001/secondary_weapons')
-        .then(res => res.json()) 
-        .then(secondaryWeapons => {
-          dispatch({
-            type: RECEIVE_SECONDARYWEAPONS, 
-            payload: secondaryWeapons
-          })
-        })   
-    }
-  } 
-
-  export const fetchLethalWeapons = () => {
-    return dispatch => {
-      dispatch({ type: FETCHING_LETHALWEAPONS })
-      fetch('http://localhost:3001/lethal_weapons')
-        .then(res => res.json()) 
-        .then(lethalWeapons => {
-          dispatch({
-            type: RECEIVE_LETHALWEAPONS, 
-            payload: lethalWeapons
-          })
-        })   
-    }
-  } 
-
-  export const fetchTacticalItems = () => {
-    return dispatch => {
-      dispatch({ type: FETCHING_TACTICALITEMS })
-      fetch('http://localhost:3001/tactical_items')
-        .then(res => res.json()) 
-        .then(tacticalItems => {
-          dispatch({
-            type: RECEIVE_TACTICALITEMS, 
-            payload: tacticalItems
-          })
-        })   
-    }
-  } 
-
-  export const addTacticalPackage = tacticalPackage => {
-    return dispatch => {
-      return fetch('http://localhost:3001/tactical_packages', {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(tacticalPackage)
-        }) 
-          .then(res => res.json())
-          .then(tacticalPackage => { 
-            debugger
-            dispatch({
-              type: ADD_TACTICALPACK,
-              payload: tacticalPackage
-            })
-          })
-    }
+  return dispatch => {
+    dispatch({ type: FETCHING_SECONDARYWEAPONS })
+    fetch('http://localhost:3001/secondary_weapons')
+      .then(res => res.json()) 
+      .then(secondaryWeapons => {
+        dispatch({
+          type: RECEIVE_SECONDARYWEAPONS, 
+          payload: secondaryWeapons
+        })
+      })   
   }
+} 
+export const fetchTacticalItems = () => {
+  return dispatch => {
+    dispatch({ type: FETCHING_TACTICALITEMS })
+    fetch('http://localhost:3001/tactical_items')
+      .then(res => res.json()) 
+      .then(tacticalItems => {
+        dispatch({
+           type: RECEIVE_TACTICALITEMS, 
+           payload: tacticalItems
+        })
+      })   
+  }
+} 
+
+export const addTacticalPackage = tacticalPackage => {
+  return dispatch => {
+    return fetch('http://localhost:3001/tactical_packages', {
+        method: "POST",
+        headers: {
+           "Content-Type": "application/json"
+        },
+        body: JSON.stringify(tacticalPackage)
+    }) 
+      .then(res => res.json())
+      .then(tacticalPackage => { 
+        dispatch({
+          type: ADD_TACTICALPACK,
+          payload: tacticalPackage
+        })
+      })
+  }
+}
 
 export const fetchTacticalPackagebyId = (id) => {
     return dispatch => {

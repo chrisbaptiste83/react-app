@@ -19,10 +19,10 @@ class SecondaryWeaponsContainer extends Component {
         return (
           <section> 
             <center>
-            <Jumbotron style={{ width: '50rem' }}>  
-              <h1> Secondary Weapons: </h1> 
-            </Jumbotron>
-            <SecondaryWeaponsList secondaryWeapons={this.props.secondaryWeapons}/> 
+              <Jumbotron style={{ width: '50rem' }}>  
+                <h1> Secondary Weapons: </h1> 
+              </Jumbotron>
+              <SecondaryWeaponsList secondaryWeapons={this.props.secondaryWeapons}/> 
             </center>
           </section>
         )

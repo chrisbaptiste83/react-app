@@ -27,10 +27,10 @@ class PrimaryWeaponsContainer extends Component {
     return (
       <section> 
         <center>
-        <Jumbotron style={{ width: '50rem' }}>  
-            <h1> Primary Weapons: </h1> 
-        </Jumbotron>
-        {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
+          <Jumbotron style={{ width: '50rem' }}>  
+              <h1> Primary Weapons: </h1> 
+          </Jumbotron>
+          {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
         </center>
       </section>
     )
