@@ -4,13 +4,13 @@ import {
   FETCHING_PRIMARYWEAPONS,
   RECEIVE_PRIMARYWEAPONS,
   FETCHING_TACTICALPACKS, 
-  RECEIVE_TACTICALPACK, 
   RECEIVE_LETHALWEAPONS,
   FETCHING_LETHALWEAPONS,
   RECEIVE_SECONDARYWEAPONS,
   FETCHING_SECONDARYWEAPONS, 
   RECEIVE_TACTICALITEMS,
-  FETCHING_TACTICALITEMS
+  FETCHING_TACTICALITEMS,
+  ADD_TACTICALPACK
 } from '../actions';
 
 const tacticalPackages = (state = {
@@ -28,18 +28,23 @@ const tacticalPackages = (state = {
       return {
         items: action.payload.map(tacticalPack => tacticalPack.id),
         itemsById: action.payload.reduce((idMap, tacticalPack) => {
-          idMap[tacticalPack.id] = tacticalPack;
-          return idMap;
-        },{}),
-        loading: false
+          idMap[tacticalPack.id] = tacticalPack; 
+          return idMap; 
+        },{}), 
+        loading: false 
       } 
-    case RECEIVE_TACTICALPACK: 
-    return Object.assign({}, state, {
-        tacticalPackage: action.payload
-      }) 
+    case ADD_TACTICALPACK: 
+      return {
+        ...state,
+        items: state.items.concat(action.payload.id),
+        itemsById: {
+          ...state.itemsById,
+          [action.payload.id]: action.payload
+        }
+      }    
     default:
       return state;
-  }
+  } 
 }
 
 const primaryWeapons = (state = {
