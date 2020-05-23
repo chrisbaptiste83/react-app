@@ -1,7 +1,10 @@
 import React, { Component } from 'react';  
 import TacticalPackagesList from '../components/TacticalPackagesList'; 
 import { connect } from 'react-redux';
-import { fetchTacticalPackages} from '../actions';
+import { fetchTacticalPackages} from '../actions'; 
+import {Jumbotron, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+
 
 class TacticalPackagesContainer extends Component { 
 
@@ -10,15 +13,14 @@ class TacticalPackagesContainer extends Component {
         this.renderLoadedContent = this.renderLoadedContent.bind(this)
     } 
 
-    componentDidMount() {
-      this.props.fetchTacticalPackages()
-      } 
+    componentDidMount() { 
+      this.props.fetchTacticalPackages() 
+    } 
 
       renderLoadedContent() {
         return (
           <React.Fragment>
-            <TacticalPackagesList 
-              tacticalPackages={this.props.tacticalPackages}/> 
+            <TacticalPackagesList tacticalPackages={this.props.tacticalPackages}/>    
           </React.Fragment>
         )
       } 
@@ -26,17 +28,23 @@ class TacticalPackagesContainer extends Component {
       render() {
         return (
           <section>
-            <h4>Tactical Packs</h4>
-            {this.props.loading ? 'Loading...' : this.renderLoadedContent()}
+            <center>
+               <Jumbotron style={{ width: '50rem' }}> 
+                    <h1> Tactical Packages: </h1><br></br> 
+                    <Button variant="dark"><Link to={{pathname: `/new_tactical_package`}}>Create Tactical Pack </Link></Button> 
+              </Jumbotron>     
+                {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
+            </center>
           </section>
         )
       }
 } 
 
-const mapStateToProps = ({tacticalPackages}) => {
-  return {
-    tacticalPackages: tacticalPackages.items.map(tacticalPackageId => tacticalPackages.itemsById[tacticalPackageId]),
-    loading: tacticalPackages.loading
+const mapStateToProps = ({tacticalPackages}) => { 
+  return { 
+      tacticalPackages: tacticalPackages.items.map(tacticalPackageId => tacticalPackages.itemsById[tacticalPackageId]),
+      loading: tacticalPackages.loading 
   }
 }
+
 export default connect(mapStateToProps, { fetchTacticalPackages })(TacticalPackagesContainer)
