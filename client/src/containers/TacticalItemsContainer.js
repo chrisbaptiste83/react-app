@@ -1,7 +1,8 @@
 import React, { Component } from 'react';  
 import TacticalItemsList from '../components/TacticalItemsList'; 
 import { connect } from 'react-redux';
-import { fetchTacticalItems} from '../actions';
+import { fetchTacticalItems} from '../actions'; 
+import {Jumbotron} from 'react-bootstrap'
 
 class TacticalItemsContainer extends Component { 
 
@@ -15,9 +16,13 @@ class TacticalItemsContainer extends Component {
     
     render() {
         return (
-          <section>
-            <h1>Tactical Equipment:</h1> 
-            <TacticalItemsList tacticalItems={this.props.tacticalItems}/>
+          <section> 
+            <center>
+            <Jumbotron style={{ width: '50rem' }}>  
+              <h1> Tactical Equipment:</h1> 
+            </Jumbotron>
+            <TacticalItemsList tacticalItems={this.props.tacticalItems}/> 
+            </center>
           </section>
         )
     }
