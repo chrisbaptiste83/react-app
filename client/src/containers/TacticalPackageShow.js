@@ -1,6 +1,6 @@
 import React, { Component } from 'react';  
 import TacticalPackage from '../components/TacticalPackage'; 
-import {fetchTacticalPackages} from '../actions/index.js'; 
+import {fetchTacticalPackagebyId} from '../actions/index.js'; 
 import { connect } from 'react-redux';
 
 
@@ -8,26 +8,29 @@ class TacticalPackageShow extends Component {
 
   constructor(props) { 
     super(props);
-} 
+  } 
 
   componentDidMount() { 
-    debugger
-    this.props.fetchTacticalPackages()
-    } 
+    this.props.fetchTacticalPackagebyId(this.props.match.params.id)
+  } 
 
   render() {
+    if (!this.props.tacticalPackage) {
+      return <div></div> 
+    } 
+    else {
       return ( 
-        <React.Fragment>
-        <TacticalPackage
-          tacticalPackage={this.props.tacticalPackage}/> 
-      </React.Fragment>
-      )
+        <React.Fragment>   
+          <TacticalPackage tacticalPackage={this.props.tacticalPackage}/>    
+        </React.Fragment>
+      ) 
+    }  
   }
 } 
 
-const mapStateToProps = ({tacticalPackages}) => {
+const mapStateToProps = ({tacticalPackages},{match}) => {
   return {
-    tacticalPackages: tacticalPackages
+   tacticalPackage: tacticalPackages.itemsById[match.params.id]
   }
 }
-export default connect(mapStateToProps, { fetchTacticalPackages })(TacticalPackageShow)
+export default connect(mapStateToProps, { fetchTacticalPackagebyId })(TacticalPackageShow)
