@@ -1,7 +1,8 @@
 import React, { Component } from 'react';  
 import LethalWeaponsList from '../components/LethalWeaponsList'; 
 import { connect } from 'react-redux';
-import { fetchLethalWeapons} from '../actions';
+import { fetchLethalWeapons} from '../actions'; 
+import {Jumbotron} from 'react-bootstrap'
 
 class LethalWeaponsContainer extends Component { 
 
@@ -11,13 +12,17 @@ class LethalWeaponsContainer extends Component {
 
     componentDidMount() {
         this.props.fetchLethalWeapons()
-      }
+    }
     
     render() {
         return (
-          <section>
-            <h1>Lethal Weapons:</h1> 
-            <LethalWeaponsList lethalWeapons={this.props.lethalWeapons}/>
+          <section> 
+            <center>
+            <Jumbotron style={{ width: '50rem' }}>  
+              <h1> Lethal Weapons: </h1> 
+            </Jumbotron>
+            <LethalWeaponsList lethalWeapons={this.props.lethalWeapons}/> 
+            </center>
           </section>
         )
     }
