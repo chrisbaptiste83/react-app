@@ -1,10 +1,10 @@
 import React from 'react';
-import TacticalPackage from './TacticalPackage';
+import TacticalPackageListItem from './TacticalPackageListItem';
 
-const TacticalPackagesList = ({tacticalPackages}) => {
+const TacticalPackagesList = ({tacticalPackages}) => { 
   return (
     <React.Fragment>
-      {tacticalPackages.map(packageAttributes => <TacticalPackage {...packageAttributes} />)}
+      {tacticalPackages.map(packageAttributes => <TacticalPackageListItem {...packageAttributes} />)}
     </React.Fragment>
   )
 }
