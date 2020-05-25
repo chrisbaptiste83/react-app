@@ -37,10 +37,10 @@ class AddTacticalPackage extends Component {
     return ( 
       <div>
         <center> 
-          <Jumbotron style={{ width: '50rem' }}> 
+          <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '50rem' }}> 
             <h2>Create a Tactical Pack</h2>
           </Jumbotron>
-          <Jumbotron style={{ width: '50rem' }}> 
+          <Jumbotron style={{ background: 'rgba(0,0,0, 0.75)',color:'white', width: '50rem' }}> 
             <h3>Package Info:</h3><br></br> 
             <form onSubmit={this.handleSubmit}>
               <p>
