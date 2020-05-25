@@ -19,7 +19,7 @@ import {
 function App() {
   return ( 
     <Router> 
-        <Navigation/>
+      <Navigation/><br></br>
           <Switch> 
             <Route exact path="/">
               <Landing /> 
