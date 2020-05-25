@@ -7,7 +7,7 @@ const TacticalPackage = ({tacticalPackage:{title, description, creator, secondar
   return (
     <React.Fragment>
       <center>
-        <Card style={{ width: '50rem' }}>  
+        <Card style={{background: 'rgba(0,0,0, 0.80)',color:'white', width: '50rem' }}>  
           <Card.Body>
             <Card.Title><h1>{title}</h1></Card.Title> 
             <Card.Text>
@@ -16,7 +16,7 @@ const TacticalPackage = ({tacticalPackage:{title, description, creator, secondar
             </Card.Text> 
           </Card.Body>
         </Card><br></br> 
-        <Card style={{ width: '50rem' }}>  
+        <Card style={{ background: 'rgba(0,0,0, 0.85)',color:'white', width: '50rem' }}>  
           <Card.Body>
             <Card.Title><h2>Primary Weapon:</h2><p><h2>{primary_weapon.name}</h2></p></Card.Title> 
             <p><img src={primary_weapon.image_url} width={500} height={240} alt=""/></p> 
@@ -25,7 +25,7 @@ const TacticalPackage = ({tacticalPackage:{title, description, creator, secondar
             </Card.Text> 
           </Card.Body>
         </Card><br></br> 
-        <Card style={{ width: '50rem' }}>  
+        <Card style={{ background: 'rgba(0,0,0, 0.85)',color:'white', width: '50rem' }}>  
           <Card.Body>
             <Card.Title><h2>Secondary Weapon:</h2><p><h2>{secondary_weapon.name}</h2></p></Card.Title> 
             <p><img src={secondary_weapon.image_url} width={500} height={240} alt=""/></p> 
@@ -34,7 +34,7 @@ const TacticalPackage = ({tacticalPackage:{title, description, creator, secondar
             </Card.Text> 
           </Card.Body>
         </Card><br></br> 
-        <Card style={{ width: '50rem' }}>  
+        <Card style={{background: 'rgba(0,0,0, 0.85)',color:'white', width: '50rem' }}>  
           <Card.Body>
             <Card.Title><h2>Lethal Weapon:</h2><p><h2>{lethal_weapon.name}</h2></p></Card.Title> 
             <p><img src={lethal_weapon.image_url} width={500} height={240} alt=""/></p> 
@@ -43,7 +43,7 @@ const TacticalPackage = ({tacticalPackage:{title, description, creator, secondar
             </Card.Text> 
           </Card.Body>
         </Card><br></br>
-        <Card style={{ width: '50rem' }}>  
+        <Card style={{background: 'rgba(0,0,0, 0.85)',color:'white', width: '50rem' }}>  
           <Card.Body>
             <Card.Title><h2>Tactical Equipment:</h2><p><h2>{tactical_item.name}</h2></p></Card.Title> 
             <p><img src={tactical_item.image_url} width={500} height={240} alt=""/></p> 

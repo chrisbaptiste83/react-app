@@ -18,8 +18,9 @@ class TacticalItemsContainer extends Component {
         return (
           <section> 
             <center>
-              <Jumbotron style={{ width: '50rem' }}>  
+              <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '50rem' }}>  
                 <h1> Tactical Equipment:</h1> 
+                <p>Unfortunately, zombies aren't your only enemies during an apocalypse.</p> 
               </Jumbotron>
               <TacticalItemsList tacticalItems={this.props.tacticalItems}/> 
             </center>

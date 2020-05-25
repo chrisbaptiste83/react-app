@@ -27,8 +27,9 @@ class PrimaryWeaponsContainer extends Component {
     return (
       <section> 
         <center>
-          <Jumbotron style={{ width: '50rem' }}>  
+          <Jumbotron style={{ background: 'rgba(0,0,0, 0.5)',color:'white', width: '50rem' }}>  
               <h1> Primary Weapons: </h1> 
+              <p>A primary weapon will be your go-to weapon for defense against hungry zombies.</p>
           </Jumbotron>
           {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
         </center>
