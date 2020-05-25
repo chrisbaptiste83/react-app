@@ -5,7 +5,6 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import ReduxThunk from 'redux-thunk';
 import rootReducer from './reducers';
 import App from './App'; 
-import './styles/index.css'
 import * as serviceWorker from './serviceWorker';
 
 const composeEnhancers =
