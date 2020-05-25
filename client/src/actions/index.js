@@ -96,4 +96,17 @@ export const fetchPrimaryWeapons = () => {
         })
       })
   }
+} 
+export const fetchLethalWeapons = () => {
+  return dispatch => {
+    dispatch({type:FETCHING_LETHALWEAPONS})
+    fetch('http://localhost:3001/lethal_weapons')
+      .then(res => res.json())
+      .then(lethalWeapons => {
+        dispatch({
+          type: RECEIVE_LETHALWEAPONS, 
+          payload: lethalWeapons
+        })
+      })
+  }
 }
