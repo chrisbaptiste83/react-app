@@ -23,7 +23,10 @@ class PrimaryWeaponsContainer extends Component {
     )
   } 
 
-  render() {
+
+
+  render() { 
+    
     return (
       <section> 
         <center>
@@ -31,7 +34,7 @@ class PrimaryWeaponsContainer extends Component {
               <h1> Primary Weapons: </h1> 
               <p>A primary weapon will be your go-to weapon for defense against hungry zombies.</p>
           </Jumbotron>
-          {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
+          {this.props.loading ? 'Loading...': this.renderLoadedContent()} 
         </center>
       </section>
     )

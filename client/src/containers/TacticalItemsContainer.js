@@ -7,12 +7,21 @@ import {Jumbotron} from 'react-bootstrap'
 class TacticalItemsContainer extends Component { 
 
     constructor(props) {
-        super(props);
+        super(props); 
+        this.renderLoadedContent = this.renderLoadedContent.bind(this)
     } 
 
     componentDidMount() {
         this.props.fetchTacticalItems()
-      }
+      } 
+
+      renderLoadedContent() {
+        return (
+          <React.Fragment>
+            <TacticalItemsList tacticalItems={this.props.tacticalItems}/>     
+          </React.Fragment>
+        )
+      }   
     
     render() {
         return (
@@ -22,7 +31,7 @@ class TacticalItemsContainer extends Component {
                 <h1> Tactical Equipment:</h1> 
                 <p>Unfortunately, zombies aren't your only enemies during an apocalypse.</p> 
               </Jumbotron>
-              <TacticalItemsList tacticalItems={this.props.tacticalItems}/> 
+              {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
             </center>
           </section>
         )

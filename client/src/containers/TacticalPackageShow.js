@@ -7,12 +7,22 @@ import { connect } from 'react-redux';
 class TacticalPackageShow extends Component { 
 
   constructor(props) { 
-    super(props);
+    super(props); 
+    this.renderLoadedContent = this.renderLoadedContent.bind(this)
   } 
 
   componentDidMount() { 
     this.props.fetchTacticalPackagebyId(this.props.match.params.id)
   } 
+
+  renderLoadedContent() {
+    return (
+      <React.Fragment>  
+        <TacticalPackage tacticalPackage={this.props.tacticalPackage}/>      
+      </React.Fragment>
+    )
+  } 
+
 
   render() {
     if (!this.props.tacticalPackage) {
@@ -20,8 +30,8 @@ class TacticalPackageShow extends Component {
     } 
     else {
       return ( 
-        <React.Fragment>   
-          <TacticalPackage tacticalPackage={this.props.tacticalPackage}/>    
+        <React.Fragment>  
+          {this.props.loading ? 'Loading...' : this.renderLoadedContent()}     
         </React.Fragment>
       ) 
     }  

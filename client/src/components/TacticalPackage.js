@@ -1,6 +1,5 @@
-import React from 'react'; 
-import { Link } from 'react-router-dom'; 
-import {Card, Form} from 'react-bootstrap'
+import React from 'react';
+import {Card} from 'react-bootstrap'
 
 const TacticalPackage = ({tacticalPackage:{title, description, creator, secondary_weapon, primary_weapon, lethal_weapon, tactical_item}}) => { 
  

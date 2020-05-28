@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
 import {Jumbotron} from 'react-bootstrap' 
-import {addTacticalPackage, ADD_TACTICALPACK } from '../actions'; 
+import {addTacticalPackage } from '../actions'; 
 import { connect } from 'react-redux';
 
 
@@ -9,13 +9,11 @@ class AddTacticalPackage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '', 
-      description: '', 
-      creator: '',
-      primary_weapon: {name:'', description:'', image_url:'',},
-      secondary_weapon: {name:'', description:'', image_url:'',},
-      lethal_weapon: {name:'', description:'', image_url:'',}, 
-      tactical_item: {name:'', description:'', image_url:'',}
+      tactical_package:[],
+      primary_weapon:[],
+      secondary_weapon:[],
+      lethal_weapon:[],
+      tactical_item:[]
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -26,11 +24,7 @@ class AddTacticalPackage extends Component {
   } 
 
   handleSubmit(e) {
-    e.preventDefault();
-    this.props.addTacticalPackage(this.state) 
-    .then(() => {
-      this.props.history.push('/tactical_packages')
-    })
+    e.preventDefault(); 
   }
 
   render() {
@@ -48,7 +42,7 @@ class AddTacticalPackage extends Component {
                 <input 
                   className="border"
                   type="text" 
-                  name="title"
+                  name="tactical_package[title]"
                   id="title"
                   value={this.state.title}
                   onChange={this.handleChange}
@@ -59,7 +53,7 @@ class AddTacticalPackage extends Component {
                 <input 
                   className="border"
                   type="text" 
-                  name="description"
+                  name="tactical_package[description]"
                   id="description"
                   value={this.state.description}
                   onChange={this.handleChange}
@@ -70,7 +64,7 @@ class AddTacticalPackage extends Component {
                 <input 
                   className="border"
                   type="text" 
-                  name="creator"
+                  name="tactical_package[creator]"
                   id="creator"
                   value={this.state.creator}
                   onChange={this.handleChange}
@@ -82,8 +76,8 @@ class AddTacticalPackage extends Component {
                 <input 
                   className="border"
                   type="text" 
-                  name="primary_weapon.name"
-                  id="primary_weapon[name]"
+                    name="primary_weapon[name]"
+                  id= "name"
                   value={this.state.primary_weapon.name}
                   onChange={this.handleChange}
                 />
@@ -93,7 +87,7 @@ class AddTacticalPackage extends Component {
                 <input 
                   className="border"
                   type="text" 
-                  name="primary_weapon[description]"
+                  name="prmary_weapon[description]"
                   id="primary_weapon[description]"
                   value={this.state.primary_weapon.description}
                   onChange={this.handleChange}

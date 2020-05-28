@@ -7,12 +7,21 @@ import {Jumbotron} from 'react-bootstrap'
 class LethalWeaponsContainer extends Component { 
 
     constructor(props) {
-        super(props);
+        super(props); 
+        this.renderLoadedContent = this.renderLoadedContent.bind(this)
     } 
 
     componentDidMount() {
         this.props.fetchLethalWeapons()
-    }
+    } 
+
+  renderLoadedContent() {
+    return (
+      <React.Fragment>
+       <LethalWeaponsList lethalWeapons={this.props.lethalWeapons}/>   
+      </React.Fragment>
+    )
+  } 
     
     render() {
         return (
@@ -21,8 +30,8 @@ class LethalWeaponsContainer extends Component {
               <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '50rem' }}>  
                 <h1> Lethal Weapons: </h1> 
                 <p>Designed to strategically take out one or more zombies with minimal effort on your part. Great for setting up defensinve positions.</p>
-              </Jumbotron>
-              <LethalWeaponsList lethalWeapons={this.props.lethalWeapons}/> 
+              </Jumbotron> 
+              {this.props.loading ? 'Loading...': this.renderLoadedContent()}  
             </center>
           </section>
         )
