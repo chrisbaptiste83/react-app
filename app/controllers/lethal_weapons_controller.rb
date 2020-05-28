@@ -46,6 +46,6 @@ class LethalWeaponsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def lethal_weapon_params
-      params.require(:lethal_weapon).permit(:name, :description)
+      params.require(:lethal_weapon).permit(:name, :description, :image_url, :tactical_package_id)
     end
 end
