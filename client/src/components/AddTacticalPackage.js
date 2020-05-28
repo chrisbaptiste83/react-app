@@ -1,19 +1,20 @@
 import React, { Component } from 'react'; 
 import {Jumbotron} from 'react-bootstrap' 
 import {addTacticalPackage } from '../actions'; 
-import { connect } from 'react-redux';
-
+import { connect } from 'react-redux'; 
+import AddPrimaryWeapon from './AddPrimaryWeapon'; 
+import AddSecondaryWeapon from './AddSecondaryWeapon'; 
+import AddLethalWeapon from './AddLethalWeapon'; 
+import AddTacticalItem from './AddTacticalItem'; 
 
 class AddTacticalPackage extends Component {
   
   constructor(props) {
     super(props)
     this.state = {
-      tactical_package:[],
-      primary_weapon:[],
-      secondary_weapon:[],
-      lethal_weapon:[],
-      tactical_item:[]
+    title: '', 
+    description: '', 
+    creator: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,6 +26,12 @@ class AddTacticalPackage extends Component {
 
   handleSubmit(e) {
     e.preventDefault(); 
+    this.props.addTacticalPackage(this.state) 
+    this.Setstate = ({
+      title: '', 
+      description: '', 
+      creator: ''
+      }) 
   }
 
   render() {
@@ -42,7 +49,7 @@ class AddTacticalPackage extends Component {
                 <input 
                   className="border"
                   type="text" 
-                  name="tactical_package[title]"
+                  name="title"
                   id="title"
                   value={this.state.title}
                   onChange={this.handleChange}
@@ -53,7 +60,7 @@ class AddTacticalPackage extends Component {
                 <input 
                   className="border"
                   type="text" 
-                  name="tactical_package[description]"
+                  name="description"
                   id="description"
                   value={this.state.description}
                   onChange={this.handleChange}
@@ -64,153 +71,21 @@ class AddTacticalPackage extends Component {
                 <input 
                   className="border"
                   type="text" 
-                  name="tactical_package[creator]"
+                  name="creator"
                   id="creator"
                   value={this.state.creator}
                   onChange={this.handleChange}
                 />
-              </p>
-              <p> 
-              <h3>Primary Weapon:</h3><br></br> 
-                <label htmlFor="primary_weapon[name]">Name:</label>
-                <input 
-                  className="border"
-                  type="text" 
-                    name="primary_weapon[name]"
-                  id= "name"
-                  value={this.state.primary_weapon.name}
-                  onChange={this.handleChange}
-                />
-              </p>
-              <p>
-                <label htmlFor="primary_weapon[description]">Description</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="prmary_weapon[description]"
-                  id="primary_weapon[description]"
-                  value={this.state.primary_weapon.description}
-                  onChange={this.handleChange}
-                />
-              </p>
-              <p>
-                <label htmlFor="primary_weapon[image_url]">Image URL:</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="primary_weapon[image_url]"
-                  id="primary_weapon[image_url]"
-                  value={this.state.primary_weapon.image_url}
-                  onChange={this.handleChange}
-                />
               </p> 
-              <p> 
-              <h3>Secondary Weapon:</h3><br></br> 
-                <label htmlFor="secondary_weapon[name]">Name:</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="secondary_weapon[name]"
-                  id="secondary_weapon[name]"
-                  value={this.state.secondary_weapon.name}
-                  onChange={this.handleChange}
-                />
-              </p>
-              <p>
-                <label htmlFor="secondary_weapon[description]">Description</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="secondary_weapon[description]"
-                  id="seondary_weapon[description]"
-                  value={this.state.secondary_weapon.description}
-                  onChange={this.handleChange}
-                />
-              </p>
-              <p>
-                <label htmlFor="secondary_weapon[image_url]">Image URL:</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="secondary_weapon[image_url]"
-                  id="secondary_weapon[image_url]"
-                  value={this.state.secondary_weapon.image_url}
-                  onChange={this.handleChange}
-                />
-              </p> 
-              <p> 
-              <h3>Lethal Weapon:</h3><br></br> 
-                <label htmlFor="lethal_weapon[name]">Name:</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="lethal_weapon[name]"
-                  id="lethal_weapon[name]"
-                  value={this.state.lethal_weapon.name}
-                  onChange={this.handleChange}
-                />
-              </p>
-              <p>
-                <label htmlFor="lethal_weapon[description]">Description</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="lethal_weapon[description]"
-                  id="lethal_weapon[description]"
-                  value={this.state.lethal_weapon.description}
-                  onChange={this.handleChange}
-                />
-              </p>
-              <p>
-                <label htmlFor="lethal_weapon[image_url]">Image URL:</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="lethal_weapon[image_url]"
-                  id="lethal_weapon[image_url]"
-                  value={this.state.lethal_weapon.image_url}
-                  onChange={this.handleChange}
-                />
-              </p> 
-              <p> 
-              <h3>Tactical Equipment:</h3><br></br> 
-                <label htmlFor="tactical_item[name]">Name:</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="tactical_item[name]"
-                  id="tactical_item[name]"
-                  value={this.state.tactical_item.image_url}
-                  onChange={this.handleChange}
-                />
-              </p> 
-              <p>
-                <label htmlFor="tactical_item[description]">Description</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="tactical_item[description]"
-                  id="tactical_item[description]"
-                  value={this.state.tactical_item.description}
-                  onChange={this.handleChange}
-                />
-              </p>
-              <p>
-                <label htmlFor="tactical_item[image_url]">Image URL:</label>
-                <input 
-                  className="border"
-                  type="text" 
-                  name="tactical_item[image_url]"
-                  id="tactical_item[image_url]"
-                  value={this.state.tactical_item.image_url}
-                  onChange={this.handleChange}
-                />
-              </p>
               <input
                 type="submit" 
-                value="Submit" 
+                value="Create Package" 
               />
-            </form> 
+            </form><br></br> 
+            <AddPrimaryWeapon/><br></br> 
+            <AddSecondaryWeapon/><br></br> 
+            <AddLethalWeapon/><br></br> 
+            <AddTacticalItem/><br></br> 
           </Jumbotron> 
         </center> 
       </div>
