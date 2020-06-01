@@ -29,9 +29,10 @@ class TacticalPackagesContainer extends Component {
         return (
           <section>
             <center>
-               <Jumbotron style={{ background: 'rgba(0,0,0, .75)',color:'white', width: '50rem' }}> 
+               <Jumbotron style={{ background: 'rgba(0,0,0, .75)',color:'white', width: '65rem' }}> 
                     <h1> Tactical Packages: </h1><br></br> 
-                    <Button style={{ background: 'rgba(0,0,0, 0.5)'}}><Link to={{pathname: `/new_tactical_package`}}>Create Tactical Pack </Link></Button> 
+                    <Button style={{ background: 'rgba(0,0,0, 0.5)'}}><Link to={{pathname: `/new_tactical_package`}}>Create Tactical Pack </Link></Button><br></br><br></br>
+                    <h5>Select "Add Equipment" to add weapons and equipment to newly created tactical pack.</h5> 
               </Jumbotron>     
                 {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
             </center>
