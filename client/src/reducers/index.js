@@ -10,7 +10,11 @@ import {
   FETCHING_SECONDARYWEAPONS, 
   RECEIVE_TACTICALITEMS,
   FETCHING_TACTICALITEMS,
-  ADD_TACTICALPACK
+  ADD_TACTICALPACK, 
+  ADD_PRIMARYWEAPON, 
+  ADD_SECONDARYWEAPON, 
+  ADD_LETHALWEAPON, 
+  ADD_TACTICALITEM
 } from '../actions';
 
 const tacticalPackages = (state = {
@@ -66,7 +70,16 @@ const primaryWeapons = (state = {
           return idMap;
         },{}),
         loading: false
-      }
+      } 
+      case ADD_PRIMARYWEAPON: 
+      return {
+        ...state,
+        items: state.items.concat(action.payload.id),
+        itemsById: {
+          ...state.itemsById,
+          [action.payload.id]: action.payload
+        }
+      }  
     default:
       return state;
   }
@@ -91,7 +104,16 @@ const tacticalItems = (state = {
             return idMap;
           },{}),
           loading: false
-        }
+        } 
+        case ADD_TACTICALITEM: 
+        return {
+          ...state,
+          items: state.items.concat(action.payload.id),
+          itemsById: {
+            ...state.itemsById,
+            [action.payload.id]: action.payload
+          }
+        }     
       default:
         return state;
     }
@@ -116,7 +138,16 @@ const tacticalItems = (state = {
             return idMap;
           },{}),
           loading: false
-        }
+        } 
+        case ADD_LETHALWEAPON: 
+        return {
+          ...state,
+          items: state.items.concat(action.payload.id),
+          itemsById: {
+            ...state.itemsById,
+            [action.payload.id]: action.payload
+          }
+        }    
       default:
         return state;
     }
@@ -141,7 +172,16 @@ const tacticalItems = (state = {
             return idMap;
           },{}),
           loading: false
+      } 
+      case ADD_SECONDARYWEAPON: 
+      return {
+        ...state,
+        items: state.items.concat(action.payload.id),
+        itemsById: {
+          ...state.itemsById,
+          [action.payload.id]: action.payload
         }
+      }  
       default:
         return state;
     }
