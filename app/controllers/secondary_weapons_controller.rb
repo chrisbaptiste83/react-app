@@ -46,6 +46,6 @@ class SecondaryWeaponsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def secondary_weapon_params
-      params.require(:secondary_weapon).permit(:name, :description)
+      params.require(:secondary_weapon).permit(:name, :description, :image_url, :tactical_package_id)
     end
 end

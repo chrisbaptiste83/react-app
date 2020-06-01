@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import {Card, Button} from 'react-bootstrap'
 
 const TacticalPackageListItem = ({id, title, description, creator, primary_weapon}) => { 
- 
   return (
     <React.Fragment> 
-        <Card style={{ background: 'rgba(0,0,0, 0.85)',color:'white', width: '50rem' }}>  
+        <Card style={{ background: 'rgba(0,0,0, 0.85)',color:'white', width: '65rem' }}>  
           <Card.Body>
             <Card.Title><h2>{title}</h2></Card.Title> 
             <Card.Text>
@@ -18,7 +17,7 @@ const TacticalPackageListItem = ({id, title, description, creator, primary_weapo
           </Card.Body>
         </Card><br></br>
     </React.Fragment>
-  )
+  ) 
 }
 
 export default TacticalPackageListItem

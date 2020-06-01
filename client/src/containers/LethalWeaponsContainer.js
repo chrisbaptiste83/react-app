@@ -27,9 +27,9 @@ class LethalWeaponsContainer extends Component {
         return (
           <section> 
             <center>
-              <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '50rem' }}>  
+              <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '65rem' }}>  
                 <h1> Lethal Weapons: </h1> 
-                <p>Designed to strategically take out one or more zombies with minimal effort on your part. Great for setting up defensinve positions.</p>
+                <p>Designed to strategically take out one or more zombies with minimal effort on your part. Great for setting up defensive positions.</p>
               </Jumbotron> 
               {this.props.loading ? 'Loading...': this.renderLoadedContent()}  
             </center>

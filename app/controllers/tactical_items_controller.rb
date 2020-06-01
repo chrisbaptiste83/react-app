@@ -46,6 +46,6 @@ class TacticalItemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tactical_item_params
-      params.require(:tactical_item).permit(:name, :description)
+      params.require(:tactical_item).permit(:name, :description, :image_url, :tactical_package_id)
     end
 end

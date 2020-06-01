@@ -1,4 +1,10 @@
 import React, { Component } from 'react'; 
+import {addTacticalItem} from '../actions'; 
+import { connect } from 'react-redux'; 
+import {Jumbotron} from 'react-bootstrap'; 
+import {Link} from 'react-router-dom'; 
+import {Button} from 'react-bootstrap' 
+
 
 class AddTacticalItem extends Component {
   
@@ -19,59 +25,74 @@ class AddTacticalItem extends Component {
   
     handleSubmit(e) {
       e.preventDefault(); 
+      let newTacticalItem = Object.assign({}, this.state, {
+        tactical_package_id: this.props.id 
+      })
+      this.props.addTacticalItem(newTacticalItem) 
+      this.setState({ 
+        submitted:true
+        })
     }
   
     render() {
       return ( 
         <div>
           <center> 
-            <form>
+          <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '65rem' }}>  
+            <form onSubmit={this.handleSubmit}>
             <p> 
               <h3>Tactical Equipment:</h3><br></br> 
-                <label htmlFor="tactical_item[name]">Name:</label>
+                <label htmlFor="name"><h4>Name:</h4></label><br></br>
                 <input 
+                  style={{width: "700px"}}
                   className="border"
                   type="text" 
-                  name="tactical_item[name]"
-                  id="tactical_item[name]"
-                  value={this.state.tactical_item}
+                  name="name"
+                  id="name"
+                  value={this.state.namedescriptionimage_url}
                   onChange={this.handleChange}
                 />
             </p> 
             <p>
-                <label htmlFor="tactical_item[description]">Description</label>
-                <input 
+                <label htmlFor="description"><h4>Description:</h4></label><br></br>
+                <input
+                  style={{width: "700px"}} 
                   className="border"
                   type="text" 
-                  name="tactical_item[description]"
-                  id="tactical_item[description]"
-                  value={this.state.tactical_item}
+                  name="description"
+                  id="description"
+                  value={this.state.description}
                   onChange={this.handleChange}
                 />
             </p>
             <p>
-                <label htmlFor="tactical_item[image_url]">Image URL:</label>
+                <label htmlFor="image_url"><h4>Image URL:</h4></label><br></br>
                 <input 
+                  style={{width: "700px"}}
                   className="border"
                   type="text" 
-                  name="tactical_item[image_url]"
-                  id="tactical_item[image_url]"
-                  value={this.state.tactical_item}
+                  name="image_url"
+                  id="image_url"
+                  value={this.state.image_url}
                   onChange={this.handleChange}
                 />
-            </p> 
-            <input
+            </p><br></br> 
+            <input 
+               disabled={this.state.submitted}
                type="submit" 
                value="Add Tactical Item" 
              />
-            </form> 
+            </form><br></br> 
+            <Button style={{ background: 'black'}}><Link to={{ pathname: `/tactical_packages/${this.props.id}`}}> Got To Tactical Pack</Link></Button>
+            </Jumbotron>
             </center> 
+            
         </div>
       ) 
     }
   }
   
-  export default AddTacticalItem;
+  export default connect(null, { addTacticalItem })(AddTacticalItem);
 
 
 
