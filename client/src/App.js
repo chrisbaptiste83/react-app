@@ -10,6 +10,7 @@ import TacticalPackageShow from './containers/TacticalPackageShow';
 import AddTacticalPackage from './components/AddTacticalPackage'; 
 import Landing from './components/Landing'; 
 import Navigation from './components/Navigation'; 
+import AddPackEquipment from './components/AddPackEquipment';
 import {
   BrowserRouter as Router,
   Switch,
@@ -39,8 +40,9 @@ function App() {
             <Route path="/lethal_weapons">
               <LethalWeaponsContainer />
             </Route> 
-            <Route path="/tactical_packages/:id" component={TacticalPackageShow}/>  
-            <Route path="/new_tactical_package" component={AddTacticalPackage}/>
+            <Route exact path="/tactical_packages/new" component={AddTacticalPackage}/>
+            <Route path="/tactical_packages/:id/add_equipment" component={AddPackEquipment}/>  
+            <Route exact path="/tactical_packages/:id" component={TacticalPackageShow}/>  
           </Switch> 
     </Router>
   );
