@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import {Jumbotron} from 'react-bootstrap' 
 import {addTacticalPackage } from '../actions'; 
 import { connect } from 'react-redux'; 
-import AddPrimaryWeapon from './AddPrimaryWeapon'; 
-import AddSecondaryWeapon from './AddSecondaryWeapon'; 
-import AddLethalWeapon from './AddLethalWeapon'; 
-import AddTacticalItem from './AddTacticalItem'; 
 
 class AddTacticalPackage extends Component {
   
@@ -26,11 +22,12 @@ class AddTacticalPackage extends Component {
 
   handleSubmit(e) {
     e.preventDefault(); 
-    this.props.addTacticalPackage(this.state) 
-    this.Setstate = ({
-      title: '', 
-      description: '', 
-      creator: ''
+    this.props.addTacticalPackage(this.state)
+      .then(res => { 
+        this.props.history.push('/tactical_packages')
+      })  
+    this.setState({ 
+      submitted:true
       }) 
   }
 
@@ -38,15 +35,17 @@ class AddTacticalPackage extends Component {
     return ( 
       <div>
         <center> 
-          <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '50rem' }}> 
+          <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '75rem' }}> 
             <h2>Create a Tactical Pack</h2>
+            <h4>Create a tactical package first, then add weapons and equipment.</h4>
           </Jumbotron>
-          <Jumbotron style={{ background: 'rgba(0,0,0, 0.75)',color:'white', width: '50rem' }}> 
-            <h3>Package Info:</h3><br></br> 
+          <Jumbotron style={{ background: 'rgba(0,0,0, 0.75)',color:'white', width: '75rem' }}> 
+            <h2>Tactical Package Details:</h2><br></br> 
             <form onSubmit={this.handleSubmit}>
               <p>
-                <label htmlFor="title">Title</label>
+                <label htmlFor="title"><h3>Title</h3></label><br></br>
                 <input 
+                  style={{width: "725px"}} 
                   className="border"
                   type="text" 
                   name="title"
@@ -56,8 +55,9 @@ class AddTacticalPackage extends Component {
                 />
               </p>
               <p>
-                <label htmlFor="description">Description:</label>
+                <label htmlFor="description"><h3>Description:</h3></label><br></br>
                 <input 
+                  style={{width: "725px"}}
                   className="border"
                   type="text" 
                   name="description"
@@ -67,8 +67,9 @@ class AddTacticalPackage extends Component {
                 />
               </p>
               <p>
-                <label htmlFor="creator">Creator:</label>
+                <label htmlFor="creator"><h3>Creator:</h3></label><br></br>
                 <input 
+                  style={{width: "725px"}}
                   className="border"
                   type="text" 
                   name="creator"
@@ -76,16 +77,13 @@ class AddTacticalPackage extends Component {
                   value={this.state.creator}
                   onChange={this.handleChange}
                 />
-              </p> 
-              <input
+              </p><br></br>
+              <input 
+                disabled={this.state.submitted}
                 type="submit" 
                 value="Create Package" 
               />
-            </form><br></br> 
-            <AddPrimaryWeapon/><br></br> 
-            <AddSecondaryWeapon/><br></br> 
-            <AddLethalWeapon/><br></br> 
-            <AddTacticalItem/><br></br> 
+            </form> 
           </Jumbotron> 
         </center> 
       </div>
