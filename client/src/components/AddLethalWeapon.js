@@ -1,4 +1,8 @@
 import React, { Component } from 'react'; 
+import {addLethalWeapon} from '../actions'; 
+import { connect } from 'react-redux'; 
+import {Jumbotron} from 'react-bootstrap'
+
 
 class AddLethalWeapon extends Component {
   
@@ -19,18 +23,26 @@ class AddLethalWeapon extends Component {
   
     handleSubmit(e) {
       e.preventDefault(); 
+      let newLethalWeapon = Object.assign({}, this.state, {
+        tactical_package_id: this.props.id 
+      })
+      this.props.addLethalWeapon(newLethalWeapon) 
+      this.setState({ 
+        submitted:true
+        }) 
     }
   
     render() {
       return ( 
         <div>
           <center> 
-            
-            <form>
+          <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '65rem' }}>
+            <form onSubmit={this.handleSubmit}>
                 <p> 
                 <h3>Lethal Weapon:</h3><br></br> 
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="name"><h4>Name:</h4></label><br></br>
                     <input 
+                    style={{width: "700px"}}
                     className="border"
                     type="name" 
                     name="name"
@@ -40,8 +52,9 @@ class AddLethalWeapon extends Component {
                     />
                 </p>
                 <p>
-                    <label htmlFor="description">Description</label>
+                    <label htmlFor="description"><h4>Description:</h4></label><br></br>
                     <input 
+                    style={{width: "700px"}}
                     className="border"
                     type="text" 
                     name="description"
@@ -51,8 +64,9 @@ class AddLethalWeapon extends Component {
                     />
                 </p>
                 <p>
-                    <label htmlFor="image_url">Image URL:</label>
+                    <label htmlFor="image_url"><h4>Image URL:</h4></label><br></br>
                     <input 
+                    style={{width: "700px"}} 
                     className="border"
                     type="text" 
                     name="image_url"
@@ -60,20 +74,21 @@ class AddLethalWeapon extends Component {
                     value={this.state.lethal_weapon}
                     onChange={this.handleChange}
                     />
-                </p> 
-                <input
+                </p><br></br> 
+                <input 
+                disabled={this.state.submitted}
                 type="submit" 
                 value="Add Lethal Weapon" 
                 />
             </form> 
-           
+           </Jumbotron>
           </center> 
         </div>
       ) 
     }
   }
   
-  export default AddLethalWeapon;
+  export default connect(null, { addLethalWeapon })(AddLethalWeapon);
 
 
               
