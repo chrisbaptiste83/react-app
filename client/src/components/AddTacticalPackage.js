@@ -24,7 +24,7 @@ class AddTacticalPackage extends Component {
     e.preventDefault(); 
     this.props.addTacticalPackage(this.state)
       .then(res => { 
-        this.props.history.push('/tactical_packages')
+        this.props.history.push(`/tactical_packages/${res.id}/add_equipment`)
       })  
     this.setState({ 
       submitted:true
