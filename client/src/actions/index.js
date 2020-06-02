@@ -12,7 +12,8 @@ export const ADD_TACTICALPACK = "ADD_TACTICALPACK"
 export const ADD_PRIMARYWEAPON = "ADD_PRIMARYWEAPON" 
 export const ADD_SECONDARYWEAPON = "ADD_SECONDARYWEAPON" 
 export const ADD_LETHALWEAPON = "ADD_LETHALWEAPON" 
-export const ADD_TACTICALITEM = "TACTICALITEM"
+export const ADD_TACTICALITEM = "TACTICALITEM" 
+export const DELETE_TACTICALPACK = "DELETE_TACTICALPACK" 
 
 export const fetchTacticalPackages = () => {
   return dispatch => {
@@ -69,10 +70,25 @@ export const addTacticalPackage = tacticalPackage => {
         dispatch({
           type: ADD_TACTICALPACK,
           payload: tacticalPackage
-        })
+        }) 
+        return tacticalPackage  
       })
   }
 } 
+
+export const deleteTacticalPackage = (tacticalPackageId) => { 
+  return dispatch => {
+    return fetch(`http://localhost:3001/tactical_packages/${tacticalPackageId}`, {
+      method: 'DELETE'
+    }) 
+    .then(tacticalPackage => { 
+      dispatch({
+        type: DELETE_TACTICALPACK,
+        payload: [tacticalPackage]
+      }) 
+    }) 
+  } 
+}  
 
 export const addPrimaryWeapon = primaryWeapon => {
   return dispatch => {
@@ -88,7 +104,7 @@ export const addPrimaryWeapon = primaryWeapon => {
           dispatch({
             type: ADD_PRIMARYWEAPON,
             payload: primaryWeapon
-          })
+          })   
         })
   }
 } 
