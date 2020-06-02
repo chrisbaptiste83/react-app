@@ -12,31 +12,32 @@ import { connect } from 'react-redux';
 class AddPackEquipment extends Component { 
 
     
-      componentDidMount() { 
-        this.props.fetchTacticalPackagebyId(this.props.match.params.id)
-      } 
+  componentDidMount() { 
+    this.props.fetchTacticalPackagebyId(this.props.match.params.id)
+  } 
     
-    render() {
-      return (  
-        <center> 
-        <PackageListItem {...this.props.tacticalPackage}/>
-          <React.Fragment>
-                <AddPrimaryWeapon {...this.props.tacticalPackage}/><br></br> 
-                <AddSecondaryWeapon {...this.props.tacticalPackage}/><br></br> 
-                <AddLethalWeapon {...this.props.tacticalPackage}/><br></br> 
-                <AddTacticalItem {...this.props.tacticalPackage}/><br></br>               
+  render() {
+    return (  
+      <center> 
+        <React.Fragment> 
+            <PackageListItem {...this.props.tacticalPackage}/>
+            <AddPrimaryWeapon {...this.props.tacticalPackage}/><br></br> 
+            <AddSecondaryWeapon {...this.props.tacticalPackage}/><br></br> 
+            <AddLethalWeapon {...this.props.tacticalPackage}/><br></br> 
+            <AddTacticalItem {...this.props.tacticalPackage}/><br></br>               
         </React.Fragment> 
-        </center>
-      ) 
-    }
+      </center>
+    ) 
   }
+}
   
-  const mapStateToProps = ({tacticalPackages},{match}) => {
-    return {
-     tacticalPackage: tacticalPackages.itemsById[match.params.id]
-    }
+const mapStateToProps = ({tacticalPackages},{match}) => {
+  return {
+    tacticalPackage: tacticalPackages.itemsById[match.params.id]
   }
-  export default connect(mapStateToProps, { fetchTacticalPackagebyId })(AddPackEquipment)
+}
+
+export default connect(mapStateToProps, { fetchTacticalPackagebyId })(AddPackEquipment)
 
 
               

@@ -41,7 +41,6 @@ class TacticalPackagesList extends Component {
   };  
   
 
-
   render() {  
     const { tacticalPackages} = this.props; 
     const packageList = this.tacticalPackagesList(tacticalPackages) 
@@ -51,26 +50,26 @@ class TacticalPackagesList extends Component {
     } else {
       renderTacPacks = packageList
     };  
-  return (
-    <React.Fragment> 
-      <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '65rem' }}>
-        <label><h3>Keyword Search </h3></label><br></br>
-        <input 
-          style={{width: "450px"}}
-          type='text'
-          value={this.state.searchWord}
-          onChange={this.handleInput}
-        /><br></br><br></br>
-        <input
-          type='button'
-          value='Search'
-          onClick={this.filterTacticalPackages.bind(this)}
-        /><br></br><br></br>
-        {this.state.message}
-      </Jumbotron>
-    <h3>{renderTacPacks}</h3>
-    </React.Fragment>
-  )
+    return (
+      <React.Fragment> 
+        <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '65rem' }}>
+          <label><h3>Keyword Search </h3></label><br></br>
+          <input 
+            style={{width: "450px"}}
+            type='text'
+            value={this.state.searchWord}
+            onChange={this.handleInput}
+          /><br></br><br></br>
+          <input
+            type='button'
+            value='Search'
+            onClick={this.filterTacticalPackages.bind(this)}
+          /><br></br><br></br>
+          {this.state.message}
+        </Jumbotron>
+        <h3>{renderTacPacks}</h3>
+      </React.Fragment>
+    )
   } 
 }
 

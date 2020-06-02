@@ -6,14 +6,14 @@ import {Jumbotron} from 'react-bootstrap'
 
 class LethalWeaponsContainer extends Component { 
 
-    constructor(props) {
-        super(props); 
-        this.renderLoadedContent = this.renderLoadedContent.bind(this)
-    } 
+  constructor(props) {
+      super(props); 
+      this.renderLoadedContent = this.renderLoadedContent.bind(this)
+  } 
 
-    componentDidMount() {
-        this.props.fetchLethalWeapons()
-    } 
+  componentDidMount() {
+      this.props.fetchLethalWeapons()
+  } 
 
   renderLoadedContent() {
     return (
@@ -23,19 +23,19 @@ class LethalWeaponsContainer extends Component {
     )
   } 
     
-    render() {
-        return (
-          <section> 
-            <center>
-              <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '65rem' }}>  
-                <h1> Lethal Weapons: </h1> 
-                <p>Designed to strategically take out one or more zombies with minimal effort on your part. Great for setting up defensive positions.</p>
-              </Jumbotron> 
-              {this.props.loading ? 'Loading...': this.renderLoadedContent()}  
-            </center>
-          </section>
-        )
-    }
+  render() {
+    return (
+      <section> 
+        <center>
+          <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '65rem' }}>  
+            <h1> Lethal Weapons: </h1> 
+            <p>Designed to strategically take out one or more zombies with minimal effort on your part. Great for setting up defensive positions.</p>
+          </Jumbotron> 
+          {this.props.loading ? 'Loading...': this.renderLoadedContent()}  
+        </center>
+      </section>
+    )
+  }
 } 
 
 const mapStateToProps = ({lethalWeapons}) => {

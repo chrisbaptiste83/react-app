@@ -8,37 +8,37 @@ import { Link } from 'react-router-dom'
 
 class TacticalPackagesContainer extends Component { 
 
-    constructor(props) {
-        super(props);
-        this.renderLoadedContent = this.renderLoadedContent.bind(this)
-    } 
+  constructor(props) {
+      super(props);
+      this.renderLoadedContent = this.renderLoadedContent.bind(this)
+  } 
 
-    componentDidMount() { 
-      this.props.fetchTacticalPackages() 
-    } 
+  componentDidMount() { 
+    this.props.fetchTacticalPackages() 
+  } 
 
-      renderLoadedContent() {
-        return (
-          <React.Fragment>
-            <TacticalPackagesList tacticalPackages={this.props.tacticalPackages} />    
-          </React.Fragment>
-        )
-      } 
+  renderLoadedContent() {
+    return (
+      <React.Fragment>
+        <TacticalPackagesList tacticalPackages={this.props.tacticalPackages} />    
+      </React.Fragment>
+    )
+  } 
 
-      render() {
-        return (
-          <section>
-            <center>
-               <Jumbotron style={{ background: 'rgba(0,0,0, .75)',color:'white', width: '65rem' }}> 
-                    <h1> Tactical Packages: </h1><br></br> 
-                    <Button style={{ background: 'rgba(0,0,0, 0.5)'}}><Link to={{pathname: `/tactical_packages/new`}}>Create Tactical Pack </Link></Button><br></br><br></br>
-                    <h5>Select "Add Equipment" to add weapons and equipment to newly created tactical pack.</h5> 
-              </Jumbotron>     
-                {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
-            </center>
-          </section>
-        )
-      }
+  render() {
+    return (
+      <section>
+        <center>
+          <Jumbotron style={{ background: 'rgba(0,0,0, .75)',color:'white', width: '65rem' }}> 
+            <h1> Tactical Packages: </h1><br></br> 
+              <Button style={{ background: 'rgba(0,0,0, 0.5)'}}><Link to={{pathname: `/tactical_packages/new`}}>Create Tactical Pack </Link></Button><br></br><br></br>
+              <h5>Select "Add Equipment" to add weapons and equipment to newly created tactical pack.</h5> 
+          </Jumbotron>     
+              {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
+        </center>
+      </section>
+    )
+  }
 } 
 
 const mapStateToProps = ({tacticalPackages}) => { 

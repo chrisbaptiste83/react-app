@@ -98,14 +98,14 @@ export const addPrimaryWeapon = primaryWeapon => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(primaryWeapon)
+    })
+      .then(res => res.json())
+      .then(primaryWeapon => {
+        dispatch({
+          type: ADD_PRIMARYWEAPON,
+          payload: primaryWeapon
+        })   
       })
-        .then(res => res.json())
-        .then(primaryWeapon => {
-          dispatch({
-            type: ADD_PRIMARYWEAPON,
-            payload: primaryWeapon
-          })   
-        })
   }
 } 
 
@@ -117,14 +117,14 @@ export const addSecondaryWeapon = secondaryWeapon => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(secondaryWeapon)
-      })
-        .then(res => res.json())
-        .then(secondaryWeapon => {
-          dispatch({
-            type: ADD_SECONDARYWEAPON,
-            payload: secondaryWeapon
-          })
+    })
+      .then(res => res.json())
+      .then(secondaryWeapon => {
+        dispatch({
+          type: ADD_SECONDARYWEAPON,
+          payload: secondaryWeapon
         })
+      })
   }
 } 
 
@@ -136,14 +136,14 @@ export const addLethalWeapon = lethalWeapon => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(lethalWeapon)
-      })
-        .then(res => res.json())
-        .then(lethalWeapon => {
-          dispatch({
-            type: ADD_LETHALWEAPON,
-            payload: lethalWeapon
-          })
+    })
+      .then(res => res.json())
+      .then(lethalWeapon => {
+        dispatch({
+          type: ADD_LETHALWEAPON,
+          payload: lethalWeapon
         })
+      })
   }
 } 
 
@@ -155,31 +155,31 @@ export const addTacticalItem = tacticalItem => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(tacticalItem)
-      })
-        .then(res => res.json())
-        .then(tacticalItem => {
-          dispatch({
-            type: ADD_TACTICALITEM,
-            payload: tacticalItem
-          })
+    })
+      .then(res => res.json())
+      .then(tacticalItem => {
+        dispatch({
+          type: ADD_TACTICALITEM,
+          payload: tacticalItem
         })
+      })
   }
 }
 
 
 export const fetchTacticalPackagebyId = (id) => {
-    return dispatch => {
-      dispatch({ type: FETCHING_TACTICALPACKS }) 
-      return fetch(`http://localhost:3001/tactical_packages/${id}`)
-        .then(res => res.json()) 
-        .then(tacticalPackage => {
-          dispatch({
-            type: RECEIVE_TACTICALPACKS, 
-            payload: [tacticalPackage]
-          })
-        })  
-    } 
-  }
+  return dispatch => {
+    dispatch({ type: FETCHING_TACTICALPACKS }) 
+    return fetch(`http://localhost:3001/tactical_packages/${id}`)
+      .then(res => res.json()) 
+      .then(tacticalPackage => {
+        dispatch({
+          type: RECEIVE_TACTICALPACKS, 
+          payload: [tacticalPackage]
+        })
+      })  
+  } 
+}
 
 export const fetchPrimaryWeapons = () => {
   return dispatch => {
@@ -194,6 +194,7 @@ export const fetchPrimaryWeapons = () => {
       })
   }
 } 
+
 export const fetchLethalWeapons = () => {
   return dispatch => {
     dispatch({type:FETCHING_LETHALWEAPONS})

@@ -53,8 +53,8 @@ const TacticalPackage = ({tacticalPackage:{title, description, creator, secondar
           </Card.Body>
         </Card><br></br>    
       </center>  
-  </React.Fragment>
+    </React.Fragment>
   )
 }
 
-export default TacticalPackage
+export default TacticalPackage;

@@ -26,7 +26,6 @@ class PrimaryWeaponsContainer extends Component {
 
 
   render() { 
-    
     return (
       <section> 
         <center>
@@ -42,7 +41,6 @@ class PrimaryWeaponsContainer extends Component {
 } 
 
 const mapStateToProps = ({primaryWeapons}) => { 
-  
   return { 
     primaryWeapons: primaryWeapons.items.map(primaryWeaponId => primaryWeapons.itemsById[primaryWeaponId]),
     loading: primaryWeapons.loading
