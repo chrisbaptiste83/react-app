@@ -1,8 +1,28 @@
-import React from 'react'; 
+import React, { Component } from 'react'; 
 import { Link } from 'react-router-dom'; 
-import {Card, Button} from 'react-bootstrap'
+import {Card, Button} from 'react-bootstrap'; 
+import {deleteTacticalPackage} from '../actions/index.js'; 
+import { connect } from 'react-redux'; 
+import { withRouter } from 'react-router-dom'; 
 
-const PackageListItem = ({id, title, description, creator}) => { 
+
+class PackageListItem extends Component { 
+
+constructor(props) {
+    super(props); 
+    this.handleOnClick = this.handleOnClick.bind(this)
+}        
+
+handleOnClick = () => {
+    this.props.deleteTacticalPackage(this.props.id) 
+    .then(() => { 
+        this.props.history.push('/tactical_packages')
+    })  
+}
+    
+
+render() {   
+  const {id, title, description, creator} = this.props;
   return (
     <React.Fragment> 
         <Card style={{ background: 'rgba(0,0,0, 0.85)',color:'white', width: '65rem' }}>  
@@ -12,11 +32,15 @@ const PackageListItem = ({id, title, description, creator}) => {
               <h5>{description}</h5>
               <small>created by:{creator}</small>
             </Card.Text> 
-            <Button style={{ background: 'black'}}><Link to={{ pathname: `/tactical_packages/${id}/add_equipment`}}> Add Equipment</Link></Button> 
+            <Button style={{ background: 'black'}}><Link to={{ pathname: `/tactical_packages/${id}/add_equipment`}}> Add Equipment</Link></Button><br></br>
           </Card.Body>
+          <center> 
+            <Button style={{ background: 'black', width: '5rem'}} onClick={this.handleOnClick}>Delete</Button>
+          </center>  
         </Card><br></br>
     </React.Fragment>
   ) 
+} 
 }
 
-export default PackageListItem
+export default withRouter(connect (null, {deleteTacticalPackage})(PackageListItem));
