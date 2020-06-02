@@ -45,7 +45,12 @@ const tacticalPackages = (state = {
           ...state.itemsById,
           [action.payload.id]: action.payload
         }
-      }    
+      }
+    case 'DELETE_TACTICALPACK':
+      return {
+        ...state,
+        items: state.items.filter(item => item !== action.payload)
+      };   
     default:
       return state;
   } 
