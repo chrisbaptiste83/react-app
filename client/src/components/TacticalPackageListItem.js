@@ -12,8 +12,8 @@ const TacticalPackageListItem = ({id, title, description, creator, primary_weapo
               <h5>{description}</h5>
               <small>created by:{creator}</small>
             </Card.Text> 
-            <p><img src={primary_weapon.image_url} width={500} height={240} alt="" /></p> 
-            <Button style={{ background: 'black'}}><Link to={{ pathname: `/tactical_packages/${id}`}}> View Tac Pack</Link></Button>  
+            <img src={primary_weapon.image_url} width={500} height={240} alt="" /><br></br><br></br>
+            <Button style={{ background: 'black'}}><Link to={{ pathname: `/tactical_packages/${id}`}}> View Tac Pack</Link></Button>
           </Card.Body>
         </Card><br></br>
     </React.Fragment>
