@@ -8,11 +8,6 @@ import { withRouter } from 'react-router-dom';
 
 class PackageListItem extends Component { 
 
-constructor(props) {
-  super(props);
-}        
-
-
   render() {   
     const {id, title, description, creator} = this.props;
     return (

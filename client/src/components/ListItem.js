@@ -21,7 +21,7 @@ handleOnClick = () => {
     
 
   render() {   
-    const {id, title, description, creator} = this.props;
+    const {title, description, creator} = this.props;
     return (
       <React.Fragment> 
           <Card style={{ background: 'rgba(0,0,0, 0.85)',color:'white', width: '65rem' }}>  

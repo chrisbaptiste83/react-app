@@ -10,23 +10,24 @@ import { connect } from 'react-redux';
 
 
 class AddPackEquipment extends Component { 
+  
 
-    
   componentDidMount() { 
     this.props.fetchTacticalPackagebyId(this.props.match.params.id)
   } 
-    
+  
+  
   render() {
     return (  
       <center> 
-        <React.Fragment> 
-            <ListItem {...this.props.tacticalPackage}/>
-            <AddPrimaryWeapon {...this.props.tacticalPackage}/><br></br> 
-            <AddSecondaryWeapon {...this.props.tacticalPackage}/><br></br> 
-            <AddLethalWeapon {...this.props.tacticalPackage}/><br></br> 
-            <AddTacticalItem {...this.props.tacticalPackage}/><br></br>               
-        </React.Fragment> 
-      </center>
+        <React.Fragment>  
+        <ListItem {...this.props.tacticalPackage}/>
+        <AddPrimaryWeapon {...this.props.tacticalPackage}/><br></br> 
+        <AddSecondaryWeapon {...this.props.tacticalPackage}/><br></br> 
+        <AddLethalWeapon {...this.props.tacticalPackage}/><br></br> 
+        <AddTacticalItem {...this.props.tacticalPackage}/><br></br>    
+        </React.Fragment>
+    </center>
     ) 
   }
 }
