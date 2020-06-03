@@ -3,7 +3,7 @@ import AddPrimaryWeapon from './AddPrimaryWeapon';
 import AddSecondaryWeapon from './AddSecondaryWeapon'; 
 import AddLethalWeapon from './AddLethalWeapon'; 
 import AddTacticalItem from './AddTacticalItem';
-import PackageListItem from './PackageListItem';
+import ListItem from './ListItem';
 import {fetchTacticalPackagebyId} from '../actions/index.js'; 
 import { connect } from 'react-redux'; 
 
@@ -20,7 +20,7 @@ class AddPackEquipment extends Component {
     return (  
       <center> 
         <React.Fragment> 
-            <PackageListItem {...this.props.tacticalPackage}/>
+            <ListItem {...this.props.tacticalPackage}/>
             <AddPrimaryWeapon {...this.props.tacticalPackage}/><br></br> 
             <AddSecondaryWeapon {...this.props.tacticalPackage}/><br></br> 
             <AddLethalWeapon {...this.props.tacticalPackage}/><br></br> 
