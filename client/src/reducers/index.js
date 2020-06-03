@@ -30,7 +30,7 @@ const tacticalPackages = (state = {
       }
     case RECEIVE_TACTICALPACKS:
       return {
-        items: action.payload.map(tacticalPack => tacticalPack.id),
+        items: action.payload.map(tacticalPack => tacticalPack.id).reverse(),
         itemsById: action.payload.reduce((idMap, tacticalPack) => {
           idMap[tacticalPack.id] = tacticalPack; 
           return idMap; 
