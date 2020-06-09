@@ -22,24 +22,12 @@ function App() {
     <Router> 
       <Navigation/><br></br>
           <Switch> 
-            <Route exact path="/">
-              <Landing /> 
-            </Route> 
-            <Route exact path="/tactical_packages">  
-              <TacticalPackagesContainer /> 
-            </Route> 
-            <Route path="/primary_weapons">
-              <PrimaryWeaponsContainer /> 
-            </Route> 
-            <Route path="/tactical_items">
-              <TacticalItemsContainer /> 
-            </Route> 
-            <Route path="/secondary_weapons">
-              <SecondaryWeaponsContainer />  
-            </Route>
-            <Route path="/lethal_weapons">
-              <LethalWeaponsContainer />
-            </Route> 
+            <Route exact path="/" component={Landing}/>
+            <Route exact path="/tactical_packages" component={TacticalPackagesContainer}/> 
+            <Route path="/primary_weapons" component={PrimaryWeaponsContainer}/>
+            <Route path="/tactical_items" component={TacticalItemsContainer}/>
+            <Route path="/secondary_weapons" component={SecondaryWeaponsContainer}/>
+            <Route path="/lethal_weapons" component={LethalWeaponsContainer}/>
             <Route exact path="/tactical_packages/new" component={AddTacticalPackage}/>
             <Route path="/tactical_packages/:id/add_equipment" component={AddPackEquipment}/>  
             <Route exact path="/tactical_packages/:id" component={TacticalPackageShow}/>  
