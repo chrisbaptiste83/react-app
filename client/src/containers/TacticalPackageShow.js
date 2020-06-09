@@ -6,9 +6,6 @@ import { connect } from 'react-redux';
 
 class TacticalPackageShow extends Component { 
 
-  constructor(props) { 
-    super(props); 
-  } 
 
   componentDidMount() { 
     this.props.fetchTacticalPackagebyId(this.props.match.params.id)

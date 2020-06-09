@@ -42,7 +42,7 @@ class TacticalPackagesList extends Component {
   
 
   render() {  
-    const { tacticalPackages} = this.props; 
+    const {tacticalPackages} = this.props; 
     const packageList = this.tacticalPackagesList(tacticalPackages) 
     let renderTacPacks;
     if (this.state.selectedTacticalPackages.length !== 0) {

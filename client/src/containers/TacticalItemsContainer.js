@@ -31,7 +31,7 @@ class TacticalItemsContainer extends Component {
             <h1> Tactical Equipment:</h1> 
             <p>Unfortunately, zombies aren't your only enemies during an apocalypse.</p> 
           </Jumbotron>
-          {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
+          {this.props.loading ? <h1>'Loading...'</h1> : this.renderLoadedContent()} 
         </center>
       </section>
     )

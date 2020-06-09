@@ -33,7 +33,7 @@ class PrimaryWeaponsContainer extends Component {
               <h1> Primary Weapons: </h1> 
               <p>A primary weapon will be your go-to weapon for defense against hungry zombies.</p>
           </Jumbotron>
-          {this.props.loading ? 'Loading...': this.renderLoadedContent()} 
+          {this.props.loading ? <h1>'Loading...'</h1>: this.renderLoadedContent()} 
         </center>
       </section>
     )
