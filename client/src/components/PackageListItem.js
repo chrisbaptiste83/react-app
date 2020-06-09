@@ -1,9 +1,6 @@
 import React, { Component } from 'react'; 
 import { Link } from 'react-router-dom'; 
-import {Card, Button} from 'react-bootstrap'; 
-import {deleteTacticalPackage} from '../actions/index.js'; 
-import { connect } from 'react-redux'; 
-import { withRouter } from 'react-router-dom'; 
+import {Card, Button} from 'react-bootstrap';
 
 
 class PackageListItem extends Component { 
@@ -29,4 +26,4 @@ class PackageListItem extends Component {
   } 
 }
 
-export default withRouter(connect (null, {deleteTacticalPackage})(PackageListItem));
+export default PackageListItem;
