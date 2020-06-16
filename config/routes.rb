@@ -1,5 +1,6 @@
 Rails.application.routes.draw do 
   
+  resources :users
   resources :tactical_packages
   resources :tactical_items
   resources :lethal_weapons
