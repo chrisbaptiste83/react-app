@@ -31,19 +31,19 @@ const usersReducer = (state = {
         return {
             ...state,
             isLoggedIn: true,
-            user: payload
+            user: action.payload
         }
       
     case LOGIN:
         return {
             isLoggedIn: true,
-            user: payload
+            user: action.payload
         }
       
     case LOGGED_IN:
         return {
             isLoggedIn: true,
-            user: payload.user
+            user: action.payload.user
         }
       
     case LOGGED_OUT:

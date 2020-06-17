@@ -15,7 +15,7 @@ class TacticalPackagesController < ApplicationController
 
   # POST /tactical_packages
   def create
-    @tactical_package = TacticalPackage.new(tactical_package_params)
+    @tactical_package = current_user.tactical_packages.build(tactical_package_params)
 
     if @tactical_package.save
       render json: @tactical_package, status: :created, location: @tactical_package

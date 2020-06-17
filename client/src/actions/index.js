@@ -20,6 +20,71 @@ export const LOGIN = "LOGIN"
 export const SIGNUP = "SIGNUP"
 export const LOGGED_OUT = "LOGGED_OUT"
 
+export function loginUser(user) {
+  return dispatch => {
+      return fetch("http://localhost:3001/login", {
+          method: "POST",
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+          },
+          body: JSON.stringify(user)
+      })
+          .then(resp => resp.json())
+          .then(( user ) => {
+              dispatch({ type: LOGIN, payload: user.attributes })
+          })
+  
+  }
+} 
+
+export function logoutUser(userId) {
+  return (dispatch) => {
+      fetch(`http://localhost:3001/logout/${userId}`, {
+          method: "DELETE",
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+          },
+      })
+          .then(resp => dispatch({ type: LOGOUT }))
+  }
+} 
+
+export function sessionStatus() { 
+  return dispatch => {
+      fetch("http://localhost:3001/login/status", { 
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json", 
+          }, 
+      }) 
+          .then(resp => resp.json()) 
+          .then(data => { 
+              data.logged_in ? dispatch({ type: LOGGED_IN, payload: { user: data.user.data.attributes, isLoggedIn: data.logged_in} }) : dispatch({ type: LOGGED_OUT, payload: data })
+          }) 
+  } 
+
+} 
+
+export function signupUser(user) { 
+  return (dispatch) => {
+      return fetch("http://localhost:3001/users", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json",
+          },
+          body: JSON.stringify(user)
+      }) 
+      
+          .then(resp => resp.json())
+          .then(( user ) => {
+              dispatch({ type: SIGNUP, payload: user.attributes })
+          } )
+  }
+}
+
 export const fetchTacticalPackages = () => {
   return dispatch => {
     dispatch({ type: FETCHING_TACTICALPACKS })

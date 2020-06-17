@@ -16,6 +16,17 @@ class UsersController < ApplicationController
                 errors: @user.errors.full_messages
             }
         end
+    end 
+
+    def index
+        @users = User.all
+        if @users 
+            render json: {
+                status: 200,
+                users: @users
+            } 
+        end
+
     end
 
     private 
