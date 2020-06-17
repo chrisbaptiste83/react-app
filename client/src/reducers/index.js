@@ -14,8 +14,54 @@ import {
   ADD_PRIMARYWEAPON, 
   ADD_SECONDARYWEAPON, 
   ADD_LETHALWEAPON, 
-  ADD_TACTICALITEM
-} from '../actions';
+  ADD_TACTICALITEM, 
+  LOGGED_OUT,
+  LOGGED_IN,
+  SIGNUP,
+  LOGIN,
+  LOGOUT
+} from '../actions'; 
+
+const usersReducer = (state = { 
+  isLoggedIn: false,
+  user: {} 
+}, action) => {
+  switch (action.type) {
+    case SIGNUP:
+        return {
+            ...state,
+            isLoggedIn: true,
+            user: payload
+        }
+      
+    case LOGIN:
+        return {
+            isLoggedIn: true,
+            user: payload
+        }
+      
+    case LOGGED_IN:
+        return {
+            isLoggedIn: true,
+            user: payload.user
+        }
+      
+    case LOGGED_OUT:
+        return {
+            isLoggedIn: false,
+            user: {}
+        }
+      
+    case LOGOUT:
+        return {
+            isLoggedIn: false,
+            usersReducer: {}
+        }
+      
+    default: 
+        return state
+  }
+}
 
 const tacticalPackages = (state = {
   items: [], 
@@ -192,7 +238,8 @@ const tacticalItems = (state = {
     }
   }
 
-const rootReducer = combineReducers({
+const rootReducer = combineReducers({ 
+  usersReducer,
   tacticalPackages,
   primaryWeapons, 
   secondaryWeapons,

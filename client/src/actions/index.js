@@ -13,7 +13,12 @@ export const ADD_PRIMARYWEAPON = "ADD_PRIMARYWEAPON"
 export const ADD_SECONDARYWEAPON = "ADD_SECONDARYWEAPON" 
 export const ADD_LETHALWEAPON = "ADD_LETHALWEAPON" 
 export const ADD_TACTICALITEM = "TACTICALITEM" 
-export const DELETE_TACTICALPACK = "DELETE_TACTICALPACK" 
+export const DELETE_TACTICALPACK = "DELETE_TACTICALPACK"  
+export const LOGGED_IN = "LOGGED_IN"
+export const LOGOUT = "LOGOUT"
+export const LOGIN = "LOGIN"
+export const SIGNUP = "SIGNUP"
+export const LOGGED_OUT = "LOGGED_OUT"
 
 export const fetchTacticalPackages = () => {
   return dispatch => {
