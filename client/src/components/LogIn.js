@@ -38,9 +38,11 @@ class Login extends Component {
         const { email, password } = this.state
         return (
             <div> 
-                <center>
+                <center> 
                 <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '75rem' }}> 
-                    <h1>Log In</h1><br></br>
+                <h1>Log In</h1><br></br> 
+                </Jumbotron> 
+                <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '75rem' }}> 
                     <form onSubmit={this.handleSubmit}> 
                     <h2>Email</h2><br></br>
                         <p>

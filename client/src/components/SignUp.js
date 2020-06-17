@@ -47,7 +47,9 @@ class SignUp extends Component {
             <div> 
                 <center>
                 <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '75rem' }}> 
-                <h1>Sign Up</h1><br></br>
+                <h1>Sign Up</h1><br></br> 
+                </Jumbotron> 
+                <Jumbotron style={{background: 'rgba(0,0,0, 0.75)',color:'white', width: '75rem' }}> 
                 <form onSubmit={this.handleSubmit}> 
                 <h2>Email</h2><br></br>
                     <p>

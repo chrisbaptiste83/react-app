@@ -1,5 +1,5 @@
 class UsersController < ApplicationController 
-
+    
     wrap_parameters :user, include: [:username, :email, :password, :password_confirmation]
 
     def create
@@ -8,12 +8,12 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             render json: {
                 status: :created,
-                user: UserSerializer.new(@user)
+                user: @user
             }
         else 
             render json: {
                 status: 500,
-                errors: @user.errors.full_messages
+                errors: @user
             }
         end
     end 

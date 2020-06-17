@@ -20,7 +20,7 @@ export const LOGIN = "LOGIN"
 export const SIGNUP = "SIGNUP"
 export const LOGGED_OUT = "LOGGED_OUT"
 
-export function loginUser(user) {
+export const loginUser = user => {
   return dispatch => {
       return fetch("http://localhost:3001/login", {
           method: "POST",
@@ -31,14 +31,13 @@ export function loginUser(user) {
           body: JSON.stringify(user)
       })
           .then(resp => resp.json())
-          .then(( user ) => {
-              dispatch({ type: LOGIN, payload: user.attributes })
+          .then(user => {
+              dispatch({ type: LOGIN, payload: user })
           })
-  
   }
 } 
 
-export function logoutUser(userId) {
+export const logoutUser = (userId) => {
   return (dispatch) => {
       fetch(`http://localhost:3001/logout/${userId}`, {
           method: "DELETE",
@@ -51,37 +50,36 @@ export function logoutUser(userId) {
   }
 } 
 
-export function sessionStatus() { 
+export const sessionStatus = () => { 
   return dispatch => {
       fetch("http://localhost:3001/login/status", { 
           headers: {
               "Content-Type": "application/json",
               "Accept": "application/json", 
           }, 
-      }) 
+      })
           .then(resp => resp.json()) 
           .then(data => { 
-              data.logged_in ? dispatch({ type: LOGGED_IN, payload: { user: data.user.data.attributes, isLoggedIn: data.logged_in} }) : dispatch({ type: LOGGED_OUT, payload: data })
+              data.logged_in ? dispatch({ type: LOGGED_IN, payload: { user: data.user.attributes, isLoggedIn: data.user.logged_in} }) : dispatch({ type: LOGGED_OUT, payload: data})
           }) 
   } 
 
 } 
 
-export function signupUser(user) { 
+export const signupUser = user => {
   return (dispatch) => {
-      return fetch("http://localhost:3001/users", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json",
-          },
-          body: JSON.stringify(user)
-      }) 
-      
-          .then(resp => resp.json())
-          .then(( user ) => {
-              dispatch({ type: SIGNUP, payload: user.attributes })
-          } )
+    return fetch("http://localhost:3001/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: JSON.stringify(user)
+    })
+      .then(resp => resp.json())
+      .then(user => { 
+        dispatch({ type: SIGNUP, payload: user })
+      })
   }
 }
 

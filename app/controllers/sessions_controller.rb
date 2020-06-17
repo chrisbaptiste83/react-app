@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             render json: {
                 status: 200,
-                user: UserSerializer.new(@user)
+                user: @user
             }
              else
             render json: { 
