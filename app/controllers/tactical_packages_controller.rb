@@ -14,9 +14,12 @@ class TacticalPackagesController < ApplicationController
 
   # POST /tactical_packages
   def create
-    @tactical_package = current_user.tactical_packages.build(tactical_package_params) 
+    @tactical_package = TacticalPackage.create!(tactical_package_params)
     if @tactical_package.save
-      render json: @tactical_package, status: :created, location: @tactical_package
+      render json: {
+                status: :created,
+                tactical_package: @tactical_package
+            }
     else
       render json: @tactical_package.errors, status: :unprocessable_entity
     end
@@ -44,6 +47,6 @@ class TacticalPackagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tactical_package_params
-      params.require(:tactical_package).permit(:title, :description, :creator)
+      params.require(:tactical_package).permit(:user_id, :title, :description, :creator)
     end
 end

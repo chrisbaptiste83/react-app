@@ -39,14 +39,17 @@ export const loginUser = user => {
 
 export const logoutUser = (userId) => {
   return (dispatch) => {
-      fetch(`http://localhost:3001/logout/${userId}`, {
-          method: "DELETE",
-          headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-          },
-      })
-          .then(resp => dispatch({ type: LOGOUT }))
+      fetch(`http://localhost:3001/logout/${userId}`, { 
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json", 
+        }, 
+      })     
+      .then(user => { 
+        dispatch({
+          type: LOGOUT
+        }) 
+      }) 
   }
 } 
 
@@ -137,7 +140,7 @@ export const addTacticalPackage = tacticalPackage => {
       .then(tacticalPackage => { 
         dispatch({
           type: ADD_TACTICALPACK,
-          payload: tacticalPackage
+          payload: [tacticalPackage]
         }) 
         return tacticalPackage  
       })
