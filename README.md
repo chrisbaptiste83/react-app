@@ -12,9 +12,8 @@ Start up the backend rails server by running rails s -p 3001. Ensure you specify
 
 1. Click on the Sign Up link on the home page to create a new profile. 
 2. At the sign up screen, enter the required fields and submit the information. 
-3. Once users create a profile, they are redirected to their profile page where they can see the most recent recipes, the most commented recipe, and a random recipe of the day.
-Click on any of the links to navigate the application. A user can create a cocktail recipe or browse all existing recipes by several filters. 
-4. After users are finished browsing through cocktail recipes or creating their own, they can clcik on the log out link to log out of the application.
+3. Once users create a profile, they are redirected the the tactical packages index page. Clcik on any of the links in the navbar to browse through the application. Browse tactical pack by any weapon type or clcik on create to upload your own. 
+4. After users are finished browsing through the tactical packages or creating their own, they can click on the log out link to log out of the application.
 
 ## Contributing:
 
