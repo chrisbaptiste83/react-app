@@ -8,9 +8,9 @@ import { connect } from "react-redux"
 const Navigation = (props) => {  
 
   const handleClick = () => { 
-    const { logoutUser, isLoggedIn, user} = props; 
+    const { logoutUser, isLoggedIn} = props; 
     if (isLoggedIn) {
-        logoutUser(user.id)
+        logoutUser()
     }
   }
 
@@ -32,5 +32,4 @@ const Navigation = (props) => {
     </div>
   )
 }
-
 export default connect(null, { logoutUser })(Navigation)

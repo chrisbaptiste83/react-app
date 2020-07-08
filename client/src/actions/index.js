@@ -1,3 +1,4 @@
+import axios from 'axios';
 export const FETCHING_TACTICALPACKS = "FETCHING_TACTICALPACKS"
 export const RECEIVE_TACTICALPACKS = "RECEIVE_TACTICALPACKS"
 export const FETCHING_PRIMARYWEAPONS = "FETCHING_PRIMARYWEAPONS"
@@ -20,70 +21,41 @@ export const LOGIN = "LOGIN"
 export const SIGNUP = "SIGNUP"
 export const LOGGED_OUT = "LOGGED_OUT"
 
-export const loginUser = user => {
+export const loginUser = (user) => {
   return dispatch => {
-      return fetch("http://localhost:3001/login", {
-          method: "POST",
-          headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-          },
-          body: JSON.stringify(user)
-      })
-          .then(resp => resp.json())
-          .then(user => {
-              dispatch({ type: LOGIN, payload: user })
+    return axios.post(`http://localhost:3001/login`,{user},{withCredentials:true})
+          .then(({data}) => {
+              dispatch({ type: LOGIN, payload: data.user })
           })
   }
 } 
 
-export const logoutUser = (userId) => {
-  return (dispatch) => {
-      fetch(`http://localhost:3001/logout/${userId}`, { 
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json", 
-        }, 
-      })     
-      .then(user => { 
-        dispatch({
-          type: LOGOUT
-        }) 
-      }) 
+export const logoutUser = () => {
+  return dispatch => {
+    localStorage.clear();
+    return dispatch({
+      type: LOGOUT
+    });
   }
 } 
 
 export const sessionStatus = () => { 
   return dispatch => {
-      fetch("http://localhost:3001/login/status", { 
-          headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json", 
-          }, 
-      })
-          .then(resp => resp.json()) 
-          .then(data => { 
+    return axios.get(`http://localhost:3001/login/status`,{withCredentials:true}) 
+          .then(({data}) => { 
               data.logged_in ? dispatch({ type: LOGGED_IN, payload: { user: data.user.attributes, isLoggedIn: data.user.logged_in} }) : dispatch({ type: LOGGED_OUT, payload: data})
           }) 
   } 
 
 } 
 
-export const signupUser = user => {
-  return (dispatch) => {
-    return fetch("http://localhost:3001/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-      body: JSON.stringify(user)
-    })
-      .then(resp => resp.json())
-      .then(user => { 
-        dispatch({ type: SIGNUP, payload: user })
+export const signup = (user) => { 
+  return dispatch => {
+    return axios.post('http://localhost:3001/users',{user},{withCredentials:true}) 
+      .then(({data}) => { 
+        dispatch({ type: SIGNUP, payload: data })
       })
-  }
+  };
 }
 
 export const fetchTacticalPackages = () => {

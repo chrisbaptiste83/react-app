@@ -28,14 +28,18 @@ class SessionsController < ApplicationController
             message: 'no such user'
           }
         end
-      end
-    def destroy
-        logout!
-        render json: {
-          status: 200,
-          logged_out: true
-        }
       end 
+
+      def destroy
+        @user = User.find(session[:user_id])
+        if @user 
+            session.clear 
+            render json: {
+                status: 200,
+                logout: true
+            }
+        end
+      end
 
     private
 
