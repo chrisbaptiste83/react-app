@@ -21,13 +21,10 @@ class AddTacticalPackage extends Component {
   } 
 
   handleSubmit(e) {
-    e.preventDefault();
-    let newTacPack = Object.assign({}, this.state, {
-      user_id: this.props.user.user.id
-    }) 
-    this.props.addTacticalPackage(newTacPack)
+    e.preventDefault(); 
+    this.props.addTacticalPackage(this.state)
       .then(res => { 
-        this.props.history.push(`/tactical_packages`)
+        this.props.history.push(`/tactical_packages/${res.id}/add_equipment`)
       })  
     this.setState({ 
       submitted:true
@@ -94,11 +91,4 @@ class AddTacticalPackage extends Component {
   }
 }
 
-const mapStateToProps = ( {usersReducer} ) => {
-  const {user} = usersReducer 
-  return { 
-      user: user 
-  }  
-}
-
-export default connect(mapStateToProps, { addTacticalPackage })(AddTacticalPackage);
+export default connect(null, { addTacticalPackage })(AddTacticalPackage);

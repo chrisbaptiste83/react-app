@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
-import { signup } from "../actions" 
+import { signupUser } from "../actions" 
 import {Jumbotron} from 'react-bootstrap'; 
 
 
@@ -28,7 +28,7 @@ class SignUp extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        this.props.signup(this.state)
+        this.props.signupUser(this.state)
             .then(() => {
                 this.props.history.push("/tactical_packages")
         })
@@ -106,4 +106,4 @@ class SignUp extends Component {
 }
 
 
-export default connect(null, { signup })(SignUp)
+export default connect(null, { signupUser })(SignUp)

@@ -5,25 +5,25 @@ import Navigation from "../components/Navigation"
 
 class UserSessionStatus extends Component {
 
-    componentDidMount() { 
+    componentDidMount() {
         this.props.sessionStatus()
     }
 
     render() { 
         return (
             <div>
-                <Navigation isLoggedIn={this.props.isLoggedIn} user={this.props.user} /> 
+                <Navigation isLoggedIn={this.props.isLoggedIn} user={this.props.user} />
             </div>
         )
     }
 }
 
-const mapStateToProps = ( {usersReducer} ) => {
-    const {isLoggedIn, user} = usersReducer 
-    return { 
+const mapStateToProps = ({ usersReducer }) => {
+    const {isLoggedIn, user} = usersReducer
+    return {
         isLoggedIn: isLoggedIn,
-        user: user 
-    }  
+        user: user
+    }
 }
 
 export default connect(mapStateToProps, { sessionStatus })(UserSessionStatus)

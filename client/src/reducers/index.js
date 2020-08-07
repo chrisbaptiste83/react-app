@@ -26,7 +26,6 @@ const usersReducer = (state = {
   isLoggedIn: false,
   user: {} 
 }, action) => {
-
   switch (action.type) {
     case SIGNUP:
         return {
@@ -44,7 +43,7 @@ const usersReducer = (state = {
     case LOGGED_IN:
         return {
             isLoggedIn: true,
-            user: action.payload
+            user: action.payload.user
         }
       
     case LOGGED_OUT:

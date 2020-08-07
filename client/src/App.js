@@ -25,8 +25,14 @@ function App() {
     <Router> 
       <UsersContainer/><br></br>
           <Switch> 
-            <Route exact path="/login" render={(routerProps) => <LogIn history={routerProps.history}/>}></Route>
-            <Route exact path="/sign_up" render={(routerProps) => <SignUp {...routerProps}/>}></Route>          
+          <Route exact path="/login" render={(routerProps) =>
+                    <LogIn history={routerProps.history}
+                    />}>
+                </Route>
+                <Route exact path="/sign_up" render={(routerProps) =>
+                    <SignUp {...routerProps}
+                    />}> 
+                </Route>    
             <Route exact path="/" component={Landing}/>
             <Route exact path="/tactical_packages" component={TacticalPackagesContainer}/> 
             <Route path="/primary_weapons" component={PrimaryWeaponsContainer}/>
