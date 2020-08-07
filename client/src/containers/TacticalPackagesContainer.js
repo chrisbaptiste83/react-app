@@ -34,7 +34,7 @@ class TacticalPackagesContainer extends Component {
               <Button style={{ background: 'rgba(0,0,0, 0.5)'}}><Link to={{pathname: `/tactical_packages/new`}}>Create Tactical Pack </Link></Button><br></br><br></br>
               <h5>Select "Add Equipment" to add weapons and equipment to newly created tactical pack.</h5> 
           </Jumbotron>     
-              {this.props.loading ?<h1>'Loading...'</h1>: this.renderLoadedContent()} 
+              {this.props.loading ? 'Loading...' : this.renderLoadedContent()} 
         </center>
       </section>
     )

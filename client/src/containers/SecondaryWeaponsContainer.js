@@ -32,7 +32,7 @@ class SecondaryWeaponsContainer extends Component {
             <h1>Secondary Weapons:</h1> 
             <p>Your secondary weapon will be your back up in case you happen to run out of ammo for your primary or you manage to lose it.</p>  
           </Jumbotron> 
-          {this.props.loading ? <h1>'Loading...'</h1>: this.renderLoadedContent()} 
+          {this.props.loading ? 'Loading...': this.renderLoadedContent()} 
         </center>
       </section>
     )

@@ -4,6 +4,7 @@ class TacticalPackagesController < ApplicationController
   # GET /tactical_packages
   def index
     @tactical_packages = TacticalPackage.all
+
     render json: @tactical_packages
   end
 
@@ -14,7 +15,8 @@ class TacticalPackagesController < ApplicationController
 
   # POST /tactical_packages
   def create
-    @tactical_package = current_user.tactical_packages.build(tactical_package_params) 
+    @tactical_package = TacticalPackage.new(tactical_package_params)
+
     if @tactical_package.save
       render json: @tactical_package, status: :created, location: @tactical_package
     else

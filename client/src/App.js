@@ -9,11 +9,8 @@ import TacticalItemsContainer from './containers/TacticalItemsContainer';
 import TacticalPackageShow from './containers/TacticalPackageShow'; 
 import AddTacticalPackage from './components/AddTacticalPackage'; 
 import Landing from './components/Landing'; 
-import UsersContainer from './containers/UsersContainer'; 
-import AddPackEquipment from './components/AddPackEquipment'; 
-import LogIn from './components/LogIn'; 
-import SignUp from './components/SignUp'; 
-
+import Navigation from './components/Navigation'; 
+import AddPackEquipment from './components/AddPackEquipment';
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,16 +20,8 @@ import {
 function App() {
   return ( 
     <Router> 
-      <UsersContainer/><br></br>
+      <Navigation/><br></br>
           <Switch> 
-          <Route exact path="/login" render={(routerProps) =>
-                    <LogIn history={routerProps.history}
-                    />}>
-                </Route>
-                <Route exact path="/sign_up" render={(routerProps) =>
-                    <SignUp {...routerProps}
-                    />}> 
-                </Route>    
             <Route exact path="/" component={Landing}/>
             <Route exact path="/tactical_packages" component={TacticalPackagesContainer}/> 
             <Route path="/primary_weapons" component={PrimaryWeaponsContainer}/>

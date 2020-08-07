@@ -15,6 +15,7 @@ const composeEnhancers =
 
 const enhancer = composeEnhancers(
   applyMiddleware(ReduxThunk),
+  
 );
 
 const store = createStore(

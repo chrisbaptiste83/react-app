@@ -31,7 +31,7 @@ class LethalWeaponsContainer extends Component {
             <h1> Lethal Weapons: </h1> 
             <p>Designed to strategically take out one or more zombies with minimal effort on your part. Great for setting up defensive positions.</p>
           </Jumbotron> 
-          {this.props.loading ? <h1>'Loading...'</h1>: this.renderLoadedContent()}  
+          {this.props.loading ? 'Loading...': this.renderLoadedContent()}  
         </center>
       </section>
     )
