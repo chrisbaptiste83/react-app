@@ -1,3 +1,3 @@
 class LethalWeapon < ApplicationRecord 
-    belongs_to :tactical_package
+    belongs_to :tactical_package, optional: true
 end
